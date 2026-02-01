@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 
 const BRAND = {
@@ -11,18 +12,12 @@ const BRAND = {
   based: "Based in California",
 };
 
-// ✅ Coffee background + KEEP your turquoise cards
 const PALETTE = {
-  // text
   ink: "#0B1B1A",
   muted: "#2B4A47",
-
-  // card surfaces (turquoise)
   card: "#D4EFEA",
   cardStrong: "#C2E6DF",
   border: "#9BCFC7",
-
-  // accents
   gold: "#D6B46A",
 };
 
@@ -35,12 +30,6 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundRepeat: "no-repeat",
     minHeight: "100vh",
     color: "#F4F4F4",
-  },
-
-  glassHeader: {
-    background: "rgba(255,255,255,0.22)",
-    border: "1px solid rgba(255,255,255,0.18)",
-    backdropFilter: "blur(12px)",
   },
 
   card: {
@@ -62,13 +51,12 @@ const styles: Record<string, React.CSSProperties> = {
     backdropFilter: "blur(10px)",
   },
 
-  // ✅ THIS MUST BE INSIDE styles
   squareCard: {
     background: "rgba(212, 239, 234, 0.60)",
     border: "1px solid rgba(155, 207, 199, 0.65)",
     boxShadow: "0 14px 40px rgba(0, 0, 0, 0.35)",
     backdropFilter: "blur(10px)",
-    borderRadius: "22px",
+    borderRadius: 22,
     minHeight: 220,
   },
 };
@@ -115,7 +103,7 @@ function Card({
 }
 
 export default function Home() {
-  async function startCheckout(productId: string) {
+  const startCheckout = async (productId: string) => {
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -127,26 +115,25 @@ export default function Home() {
 
       if (!res.ok) {
         console.error("Checkout error:", data);
-        alert("Checkout error — check terminal/console.");
+        alert("Checkout error – check terminal/console.");
         return;
       }
 
       if (!data?.url) {
-        console.error("No checkout url returned:", data);
-        alert("Checkout failed — no URL returned. Check terminal/console.");
+        console.error("No checkout URL returned:", data);
+        alert("Checkout failed – no URL returned.");
         return;
       }
 
       window.location.href = data.url;
     } catch (err) {
       console.error(err);
-      alert("Checkout failed — check terminal/console.");
+      alert("Checkout failed – check terminal/console.");
     }
-  }
+  };
 
   return (
     <main className="min-h-screen text-[#0B1B1A]" style={styles.pageBg}>
-      {/* PAGE WRAP */}
       <div className="mx-auto max-w-6xl px-4 py-8">
         {/* HERO */}
         <section className="pt-8 sm:pt-12">
@@ -169,7 +156,6 @@ export default function Home() {
                 California mornings and golden-hour resets.
               </p>
 
-              {/* Buttons */}
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
@@ -195,7 +181,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Mini chips */}
               <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
                   { title: "Fresh", desc: "small-batch roasted" },
@@ -207,23 +192,16 @@ export default function Home() {
                     className="rounded-2xl px-4 py-3"
                     style={styles.chip}
                   >
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: PALETTE.ink }}
-                    >
+                    <p className="text-sm font-semibold" style={{ color: PALETTE.ink }}>
                       {x.title}
                     </p>
-                    <p
-                      className="mt-0.5 text-xs"
-                      style={{ color: PALETTE.muted }}
-                    >
+                    <p className="mt-0.5 text-xs" style={{ color: PALETTE.muted }}>
                       {x.desc}
                     </p>
                   </div>
                 ))}
               </div>
 
-              {/* Quick info cards */}
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <Card className="p-5">
                   <p
@@ -233,8 +211,7 @@ export default function Home() {
                     ROAST PROFILE
                   </p>
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Medium roast designed for daily comfort — not bitter, not
-                    sour… just right.
+                    Medium roast designed for daily comfort — not bitter, not sour… just right.
                   </p>
                 </Card>
 
@@ -246,14 +223,13 @@ export default function Home() {
                     SHIPPING
                   </p>
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Packed fresh, sealed tight, and shipped fast so it hits your
-                    doorstep smelling amazing.
+                    Packed fresh, sealed tight, and shipped fast so it hits your doorstep smelling amazing.
                   </p>
                 </Card>
               </div>
             </div>
 
-            {/* RIGHT - FEATURED */}
+            {/* RIGHT */}
             <Card strong className="p-6">
               <div className="flex items-start gap-4">
                 <div className="rounded-2xl bg-[#F6F1E6] p-2 ring-1 ring-black/10">
@@ -275,16 +251,12 @@ export default function Home() {
                     SIGNATURE ROAST
                   </p>
 
-                  <h3
-                    className="mt-1 text-xl font-semibold"
-                    style={{ color: PALETTE.ink }}
-                  >
+                  <h3 className="mt-1 text-xl font-semibold" style={{ color: PALETTE.ink }}>
                     La Buena Hora
                   </h3>
 
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Mexican Nayarit · Washed process — nutty, sweet, and
-                    beautifully balanced.
+                    Mexican Nayarit · Washed process — nutty, sweet, and beautifully balanced.
                   </p>
                 </div>
               </div>
@@ -296,11 +268,7 @@ export default function Home() {
                   { k: "ROAST LEVEL", v: "Medium" },
                   { k: "NOTES", v: "nutty · sweet · balanced" },
                 ].map((row) => (
-                  <div
-                    key={row.k}
-                    className="rounded-2xl p-4"
-                    style={styles.card}
-                  >
+                  <div key={row.k} className="rounded-2xl p-4" style={styles.card}>
                     <p
                       className="text-[11px] tracking-[0.35em] uppercase"
                       style={{ color: PALETTE.muted }}
@@ -317,10 +285,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SHOP (square cards so you can see background) */}
+        {/* SHOP */}
         <section id="shop" className="pt-12 sm:pt-16">
           <div className="grid gap-6 sm:grid-cols-3">
-            {/* Card 1 - Soft Launch */}
             <div style={styles.squareCard} className="p-6">
               <p
                 className="text-xs tracking-[0.35em] uppercase opacity-70"
@@ -328,25 +295,15 @@ export default function Home() {
               >
                 SHOP
               </p>
-
-              <h3
-                className="mt-2 text-lg font-semibold"
-                style={{ color: PALETTE.ink }}
-              >
+              <h3 className="mt-2 text-lg font-semibold" style={{ color: PALETTE.ink }}>
                 Soft Launch Now Brewing ☕
               </h3>
-
-              <p
-                className="mt-2 text-sm opacity-90"
-                style={{ color: PALETTE.muted }}
-              >
-                Golden Hour Roast is releasing in{" "}
-                <strong>very limited quantities</strong>. This first drop is
-                small, intentional, and for early supporters.
+              <p className="mt-2 text-sm opacity-90" style={{ color: PALETTE.muted }}>
+                Golden Hour Roast is releasing in <strong>very limited quantities</strong>.
+                This first drop is small, intentional, and for early supporters.
               </p>
             </div>
 
-            {/* Card 2 - Featured: Golden Hour */}
             <div style={styles.squareCard} className="p-6">
               <p
                 className="text-xs tracking-[0.35em] uppercase opacity-70"
@@ -354,35 +311,20 @@ export default function Home() {
               >
                 FEATURED
               </p>
-
-              <h3
-                className="mt-2 text-lg font-semibold"
-                style={{ color: PALETTE.ink }}
-              >
+              <h3 className="mt-2 text-lg font-semibold" style={{ color: PALETTE.ink }}>
                 Golden Hour Roast
               </h3>
-
-              <p
-                className="mt-2 text-sm opacity-90"
-                style={{ color: PALETTE.muted }}
-              >
-                Medium roast designed for daily comfort — not bitter, not sour…
-                just right.
+              <p className="mt-2 text-sm opacity-90" style={{ color: PALETTE.muted }}>
+                Medium roast designed for daily comfort — not bitter, not sour… just right.
               </p>
-
               <p className="mt-3 text-sm" style={{ color: PALETTE.ink }}>
                 <strong>Notes:</strong> nutty • sweet • balanced
               </p>
-
-              <p
-                className="mt-2 text-xs opacity-70"
-                style={{ color: PALETTE.muted }}
-              >
+              <p className="mt-2 text-xs opacity-70" style={{ color: PALETTE.muted }}>
                 Small batch • limited stock
               </p>
             </div>
 
-            {/* Card 3 - Coming Soon */}
             <div style={styles.squareCard} className="p-6">
               <p
                 className="text-xs tracking-[0.35em] uppercase opacity-70"
@@ -390,22 +332,12 @@ export default function Home() {
               >
                 COMING SOON
               </p>
-
-              <h3
-                className="mt-2 text-lg font-semibold"
-                style={{ color: PALETTE.ink }}
-              >
+              <h3 className="mt-2 text-lg font-semibold" style={{ color: PALETTE.ink }}>
                 Next Drops
               </h3>
-
-              <p
-                className="mt-2 text-sm opacity-90"
-                style={{ color: PALETTE.muted }}
-              >
-                More small-batch releases are already in motion. Follow along so
-                you don’t miss the next drop 🤎
+              <p className="mt-2 text-sm opacity-90" style={{ color: PALETTE.muted }}>
+                More small-batch releases are already in motion. Follow along so you don’t miss the next drop 🤎
               </p>
-
               <ul className="mt-3 text-sm" style={{ color: PALETTE.muted }}>
                 <li>• La Buena Hora</li>
                 <li>• After Dark Roast</li>
@@ -414,23 +346,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* OUR STORY */}
+        {/* STORY */}
         <section id="story" className="pt-10 sm:pt-14">
           <Card className="p-6 sm:p-8">
-            <SectionTitle
-              kicker="OUR STORY"
-              title="Inspired by California mornings"
-            />
+            <SectionTitle kicker="OUR STORY" title="Inspired by California mornings" />
             <p className="max-w-4xl text-base leading-relaxed text-[#111827]">
-              CNC Inspire Coffee is for the slow sips and soft resets — the kind
-              of cup that feels like a fresh start. We built this brand around
-              cozy vibes, quality you can taste, and coffee that fits real life
-              (not just coffee-snob life). Roasted with intention means every
-              bag is made to be consistent, comforting, and easy to love — from
-              the first pour to the last sip. Roasted by Apple Mountain Coffee,
-              our trusted roasting partner, so every batch is fresh, carefully
-              crafted, and packed with care. Start with our Signature: Golden
-              Hour Roast — warm, smooth, and endlessly sippable.
+              CNC Inspire Coffee is for the slow sips and soft resets — the kind of cup that feels like a fresh start.
+              We built this brand around cozy vibes, quality you can taste, and coffee that fits real life.
+              Roasted with intention means every bag is consistent, comforting, and easy to love — from first pour to last sip.
+              Roasted by Apple Mountain Coffee, our trusted roasting partner, so every batch is fresh, carefully crafted, and packed with care.
+              Start with our Signature: Golden Hour Roast — warm, smooth, and endlessly sippable.
             </p>
           </Card>
         </section>
@@ -440,8 +365,7 @@ export default function Home() {
           <Card className="p-6 sm:p-8">
             <SectionTitle kicker="CONTACT" title="Let’s get you caffeinated" />
             <p className="text-base font-medium text-black">
-              Questions, wholesale inquiries, or just want to say hi? We’d love
-              to hear from you.
+              Questions, wholesale inquiries, or just want to say hi? We’d love to hear from you.
             </p>
 
             <div className="mt-5 grid gap-2 text-sm text-[#0B1B1A]">
@@ -468,12 +392,8 @@ export default function Home() {
             </div>
           </Card>
 
-          <p
-            className="mt-6 text-center text-xs"
-            style={{ color: "rgba(255,255,255,0.70)" }}
-          >
-            © {new Date().getFullYear()} {BRAND.name} • Small batch • Roasted with
-            intention
+          <p className="mt-6 text-center text-xs" style={{ color: "rgba(255,255,255,0.70)" }}>
+            © {new Date().getFullYear()} {BRAND.name} • Small batch • Roasted with intention
           </p>
         </section>
       </div>
