@@ -1,10 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    turbo: {
-      diagnostics: false, // stops OneDrive file-lock crash
-    },
-  },
-};
+const nextConfig = {}
 
-export default nextConfig;
+export default nextConfig
