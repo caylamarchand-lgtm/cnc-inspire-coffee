@@ -113,7 +113,7 @@ const COFFEES = [
     id: "after-dark",
     name: "After Dark Roast",
     notes: "Indonesian • earthy • cocoa",
-    stripe: "PASTE_STRIPE_PAYMENT_LINK_HERE",
+    stripe: "https://buy.stripe.com/5kQ5kDbc68wX3Uj4JpefC05",
   },
   {
     id: "still-i-rise",
