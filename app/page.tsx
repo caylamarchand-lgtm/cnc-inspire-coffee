@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { supabase } from "@/lib/supabaseClient";
 
 const BRAND = {
   name: "CNC Inspire Coffee",
@@ -183,6 +184,48 @@ export default function Home() {
   const firstBuyLink =
     COFFEES.find((c) => c.stripe)?.stripe || "#shop";
 
+const [reviews, setReviews] = React.useState<any[]>([]);
+  const [name, setName] = React.useState("");
+  const [rating, setRating] = React.useState(5);
+  const [message, setMessage] = React.useState("");
+
+  React.useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  async function fetchReviews() {
+    const { data } = await supabase
+      .from("reviews")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (data) setReviews(data);
+  }
+
+  async function submitReview(e: React.FormEvent) {
+    e.preventDefault();
+
+    const { data, error } = await supabase
+  .from("reviews")
+  .insert([{ name, rating, message }])
+  .select();
+
+if (error) {
+  console.log("INSERT ERROR:", error);
+  alert("Review failed: " + error.message);
+  return;
+}
+
+console.log("Inserted:", data);
+
+
+    setName("");
+    setRating(5);
+    setMessage("");
+    fetchReviews();
+  }
+
+
   return (
     <main className="min-h-screen text-[#0B1B1A]" style={styles.pageBg}>
       <div className="mx-auto max-w-6xl px-4 py-8">
@@ -346,6 +389,7 @@ export default function Home() {
         <section id="shop" className="pt-12 sm:pt-16">
           <div className="grid gap-6 sm:grid-cols-3">
             
+            
 
             {/* Coffee cards (auto) */}
             {COFFEES.map((coffee) => (
@@ -353,6 +397,110 @@ export default function Home() {
             ))}
           </div>
         </section>
+        
+
+{/* REVIEWS */}
+<section id="reviews" className="pt-12 sm:pt-16">
+  <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur p-6 sm:p-8">
+    <div className="flex items-start justify-between gap-6">
+      <div>
+        <h2 className="text-2xl font-semibold tracking-tight text-white">
+          Reviews
+        </h2>
+        <p className="mt-1 text-sm text-white/80">
+          Drop a review and help other coffee lovers pick their next bag ☕✨
+        </p>
+      </div>
+    </div>
+
+    {/* FORM */}
+    <form
+      onSubmit={submitReview}
+      className="mt-6 grid gap-3 sm:grid-cols-3"
+    >
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Your name"
+        className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30"
+      />
+
+      <select
+        value={rating}
+        onChange={(e) => setRating(Number(e.target.value))}
+        className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none focus:border-white/30"
+      >
+        {[5, 4, 3, 2, 1].map((n) => (
+          <option key={n} value={n} className="text-black">
+            {n} star{n === 1 ? "" : "s"}
+          </option>
+        ))}
+      </select>
+
+      <button
+        type="submit"
+       className="rounded-xl bg-gradient-to-r from-amber-400 to-yellow-300 px-4 py-3 font-semibold text-black hover:opacity-90 transition"
+      >
+        Submit review
+      </button>
+
+      <textarea
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Tell us what you loved…"
+        className="sm:col-span-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30 min-h-[120px]"
+      />
+    </form>
+
+    {/* LIST */}
+    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+      {reviews.length === 0 ? (
+        <p className="text-sm text-white/75">
+          No reviews yet — be the first 👀
+        </p>
+      ) : (
+        reviews.map((r: any) => (
+          <div
+            key={r.id}
+            className="rounded-2xl border border-white/10 bg-white/5 p-4"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-semibold text-white">{r.name}</p>
+              <p className="text-sm text-yellow-300">
+                {"★".repeat(r.rating || 0)}
+              </p>
+            </div>
+            <p className="mt-2 text-sm text-white/85">{r.message}</p>
+           <button
+  className="mt-3 text-xs text-red-400 hover:text-red-300"
+ onClick={async () => {
+  const password = prompt("Admin password?");
+  if (!password) return;
+
+  const res = await fetch("/api/reviews/delete", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: r.id, password }),
+  });
+
+  const json = await res.json();
+
+  if (!res.ok) {
+    alert("Delete failed: " + (json.error || "Unknown error"));
+    return;
+  }
+
+  fetchReviews();
+}}>
+
+  Delete
+</button>
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+</section>
       </div>
     </main>
   );
