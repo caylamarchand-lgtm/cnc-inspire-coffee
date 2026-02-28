@@ -33,24 +33,24 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#F4F4F4",
   },
 
-  card: {
-    background: PALETTE.card,
-    border: `1px solid ${PALETTE.border}`,
-    boxShadow: "0 10px 28px rgba(0,0,0,0.10)",
-  },
+card: {
+  background: PALETTE.card,
+  border: "1px solid " + PALETTE.border,
+  boxShadow: "0 10px 28px rgba(0,0,0,0.10)",
+},
 
-  cardStrong: {
-    background: PALETTE.cardStrong,
-    border: `1px solid ${PALETTE.border}`,
-    boxShadow: "0 14px 36px rgba(0,0,0,0.14)",
-  },
+cardStrong: {
+  background: PALETTE.cardStrong,
+  border: "1px solid " + PALETTE.border,
+  boxShadow: "0 14px 36px rgba(0,0,0,0.14)",
+},
 
-  chip: {
-    background: "rgba(212, 239, 234, 0.65)",
-    border: "1px solid rgba(155, 207, 199, 0.65)",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.12)",
-    backdropFilter: "blur(10px)",
-  },
+chip: {
+  background: "rgba(212, 239, 234, 0.65)",
+  border: "1px solid rgba(155, 207, 199, 0.65)",
+  boxShadow: "0 10px 24px rgba(0,0,0,0.12)",
+  backdropFilter: "blur(10px)",
+},
 
   squareCard: {
     background: "rgba(212, 239, 234, 0.60)",
@@ -73,7 +73,7 @@ function Card({
 }) {
   return (
     <div
-      className={`rounded-2xl ${className}`}
+      className={"rounded-2xl " + (className || "")}
       style={strong ? styles.cardStrong : styles.card}
     >
       {children}
@@ -102,21 +102,21 @@ const COFFEES: Coffee[] = [
     name: "La Buena Hora",
     notes: "Mexican • nutty • balanced",
     limited: true,
-    stripe: "https://buy.stripe.com/28EaEX6VQbJ9bmLa3JefC06", // paste link when ready
+    stripe: "https://buy.stripe.com/28EaEX6VQbJ9bmLa3JefC06",
   },
   {
     id: "higher-ground",
     name: "Higher Ground",
     notes: "Organic Peru • smooth • premium",
     limited: true,
-    stripe: "https://buy.stripe.com/00wdR91Bw9B1duTb7NefC09", // paste link when ready
+    stripe: "https://buy.stripe.com/00wdR91Bw9B1duTb7NefC09",
   },
   {
     id: "anchor",
     name: "Anchor",
     notes: "Organic Guatemala • smooth • balanced",
     limited: true,
-    stripe: "https://buy.stripe.com/14A9AT5RMcNd3Uj2BhefC07", // paste link when ready
+    stripe: "https://buy.stripe.com/14A9AT5RMcNd3Uj2BhefC07",
   },
   {
     id: "still-i-rise",
@@ -130,15 +130,35 @@ const COFFEES: Coffee[] = [
     name: "True North",
     notes: "Base Camp Blend • bold • steady",
     limited: false,
-    stripe: "https://buy.stripe.com/3cI8wPbc6aF5aiH4JpefC08", // paste link when ready
+    stripe: "https://buy.stripe.com/3cI8wPbc6aF5aiH4JpefC08",
+  },
+
+  // TEAS (kept in the same array - totally fine)
+  {
+    id: "soft-horizon",
+    name: "Soft Horizon",
+    notes: "Chamomile • caffeine-free • calming",
+    limited: true,
+    stripe: "https://buy.stripe.com/9B628r3JE14v9eD1xdefC0a",
+  },
+  {
+    id: "desert-current",
+    name: "Desert Current",
+    notes: "Moroccan Mint Green Tea • light caffeine • refreshing",
+    limited: true,
+    // ✅ FIXED: removed the comma at the end
+    stripe: "https://buy.stripe.com/aFadR92FA28z1Mba3JefC0b",
   },
 ];
 
+const TEA_IDS = ["soft-horizon", "desert-current"];
+
+const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
+const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
+
 function CoffeeCard({ coffee }: { coffee: Coffee }) {
   const label = coffee.limited ? "LIMITED DROP" : "AVAILABLE NOW";
-  const headline = coffee.limited
-    ? `${coffee.name} (Limited)`
-    : `${coffee.name} is available now`;
+  const headline = coffee.limited ? `${coffee.name} (Limited)` : coffee.name;
 
   return (
     <div style={styles.squareCard} className="p-6">
@@ -149,10 +169,7 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
         {label}
       </p>
 
-      <h3
-        className="mt-2 text-lg font-semibold"
-        style={{ color: PALETTE.ink }}
-      >
+      <h3 className="mt-2 text-lg font-semibold" style={{ color: PALETTE.ink }}>
         {headline}
       </h3>
 
@@ -171,8 +188,13 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
           Buy {coffee.name}
         </a>
       ) : (
-        <div className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold opacity-70"
-             style={{ background: "rgba(214,180,106,0.35)", color: PALETTE.ink }}>
+        <div
+          className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold opacity-70"
+          style={{
+            background: "rgba(214,180,106,0.35)",
+            color: PALETTE.ink,
+          }}
+        >
           Coming soon
         </div>
       )}
@@ -181,10 +203,9 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
 }
 
 export default function Home() {
-  const firstBuyLink =
-    COFFEES.find((c) => c.stripe)?.stripe || "#shop";
+  const firstBuyLink = COFFEE_ONLY.find((c) => c.stripe)?.stripe || "#shop";
 
-const [reviews, setReviews] = React.useState<any[]>([]);
+  const [reviews, setReviews] = React.useState<any[]>([]);
   const [name, setName] = React.useState("");
   const [rating, setRating] = React.useState(5);
   const [message, setMessage] = React.useState("");
@@ -206,25 +227,23 @@ const [reviews, setReviews] = React.useState<any[]>([]);
     e.preventDefault();
 
     const { data, error } = await supabase
-  .from("reviews")
-  .insert([{ name, rating, message }])
-  .select();
+      .from("reviews")
+      .insert([{ name, rating, message }])
+      .select();
 
-if (error) {
-  console.log("INSERT ERROR:", error);
-  alert("Review failed: " + error.message);
-  return;
-}
+    if (error) {
+      console.log("INSERT ERROR:", error);
+      alert("Review failed: " + error.message);
+      return;
+    }
 
-console.log("Inserted:", data);
-
+    console.log("Inserted:", data);
 
     setName("");
     setRating(5);
     setMessage("");
     fetchReviews();
   }
-
 
   return (
     <main className="min-h-screen text-[#0B1B1A]" style={styles.pageBg}>
@@ -254,7 +273,9 @@ console.log("Inserted:", data);
                 <a
                   href={firstBuyLink === "#shop" ? "#shop" : firstBuyLink}
                   target={firstBuyLink === "#shop" ? undefined : "_blank"}
-                  rel={firstBuyLink === "#shop" ? undefined : "noopener noreferrer"}
+                  rel={
+                    firstBuyLink === "#shop" ? undefined : "noopener noreferrer"
+                  }
                   className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
                   style={{ background: PALETTE.gold }}
                 >
@@ -334,13 +355,13 @@ console.log("Inserted:", data);
               <div className="flex items-start gap-4">
                 <div className="rounded-2xl bg-[#F6F1E6] p-2 ring-1 ring-black/10">
                   <Image
-  src="/the-north.jpg"
-  alt="The North - Base Camp Blend"
-  width={240}
-  height={320}
-  className="rounded-xl object-cover"
-  priority
-/>
+                    src="/the-north.jpg"
+                    alt="The North - Base Camp Blend"
+                    width={240}
+                    height={320}
+                    className="rounded-xl object-cover"
+                    priority
+                  />
                 </div>
 
                 <div className="flex-1">
@@ -351,23 +372,27 @@ console.log("Inserted:", data);
                     SIGNATURE ROAST
                   </p>
 
-                  <h3 className="mt-1 text-xl font-semibold" style={{ color: PALETTE.ink }}>
+                  <h3
+                    className="mt-1 text-xl font-semibold"
+                    style={{ color: PALETTE.ink }}
+                  >
                     The North
                   </h3>
 
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Base Camp Blend — bold, balanced, and smooth with steady depth and a clean finish.
+                    Base Camp Blend — bold, balanced, and smooth with steady depth
+                    and a clean finish.
                   </p>
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3">
                 {[
-  { k: "BLEND", v: "Base Camp Blend" },
-  { k: "ROAST LEVEL", v: "Medium-Dark" },
-  { k: "PROFILE", v: "bold · balanced · smooth" },
-  { k: "BEST FOR", v: "daily drinkers & strong mornings" },
-].map((row) => (
+                  { k: "BLEND", v: "Base Camp Blend" },
+                  { k: "ROAST LEVEL", v: "Medium-Dark" },
+                  { k: "PROFILE", v: "bold · balanced · smooth" },
+                  { k: "BEST FOR", v: "daily drinkers & strong mornings" },
+                ].map((row) => (
                   <div key={row.k} className="rounded-2xl p-4" style={styles.card}>
                     <p
                       className="text-[11px] tracking-[0.35em] uppercase"
@@ -387,120 +412,160 @@ console.log("Inserted:", data);
 
         {/* SHOP */}
         <section id="shop" className="pt-12 sm:pt-16">
-          <div className="grid gap-6 sm:grid-cols-3">
-            
-            
+          {/* COFFEE FIRST (important) */}
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <h2 className="text-4xl font-semibold tracking-wide text-white">
+                COFFEE
+              </h2>
+              <p className="mt-2 text-white/80">
+                Whole bean coffee • roasted with intention
+              </p>
+            </div>
 
-            {/* Coffee cards (auto) */}
-            {COFFEES.map((coffee) => (
+            <span className="hidden sm:block text-xs tracking-[0.35em] uppercase text-white/70">
+              Limited drops + staples
+            </span>
+          </div>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {COFFEE_ONLY.map((coffee) => (
               <CoffeeCard key={coffee.id} coffee={coffee} />
             ))}
           </div>
-        </section>
-        
 
-{/* REVIEWS */}
-<section id="reviews" className="pt-12 sm:pt-16">
-  <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur p-6 sm:p-8">
-    <div className="flex items-start justify-between gap-6">
-      <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-white">
-          Reviews
-        </h2>
-        <p className="mt-1 text-sm text-white/80">
-          Drop a review and help other coffee lovers pick their next bag ☕✨
-        </p>
-      </div>
-    </div>
+          {/* Divider */}
+          <div className="my-14 h-px w-full bg-white/20" />
 
-    {/* FORM */}
-    <form
-      onSubmit={submitReview}
-      className="mt-6 grid gap-3 sm:grid-cols-3"
-    >
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Your name"
-        className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30"
-      />
+          {/* TEAS (own beautiful bundle) */}
+          <section className="rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-6 sm:p-8">
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <h2 className="text-4xl font-semibold tracking-wide text-white">
+                  TEAS
+                </h2>
+                <p className="mt-2 text-white/80">
+                  Whole leaf blends • limited drops
+                </p>
+              </div>
 
-      <select
-        value={rating}
-        onChange={(e) => setRating(Number(e.target.value))}
-        className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none focus:border-white/30"
-      >
-        {[5, 4, 3, 2, 1].map((n) => (
-          <option key={n} value={n} className="text-black">
-            {n} star{n === 1 ? "" : "s"}
-          </option>
-        ))}
-      </select>
-
-      <button
-        type="submit"
-       className="rounded-xl bg-gradient-to-r from-amber-400 to-yellow-300 px-4 py-3 font-semibold text-black hover:opacity-90 transition"
-      >
-        Submit review
-      </button>
-
-      <textarea
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Tell us what you loved…"
-        className="sm:col-span-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30 min-h-[120px]"
-      />
-    </form>
-
-    {/* LIST */}
-    <div className="mt-8 grid gap-4 sm:grid-cols-2">
-      {reviews.length === 0 ? (
-        <p className="text-sm text-white/75">
-          No reviews yet — be the first 👀
-        </p>
-      ) : (
-        reviews.map((r: any) => (
-          <div
-            key={r.id}
-            className="rounded-2xl border border-white/10 bg-white/5 p-4"
-          >
-            <div className="flex items-center justify-between gap-3">
-              <p className="font-semibold text-white">{r.name}</p>
-              <p className="text-sm text-yellow-300">
-                {"★".repeat(r.rating || 0)}
-              </p>
+              <span className="text-xs tracking-[0.35em] uppercase text-white/70">
+                Desert Series
+              </span>
             </div>
-            <p className="mt-2 text-sm text-white/85">{r.message}</p>
-           <button
-  className="mt-3 text-xs text-red-400 hover:text-red-300"
- onClick={async () => {
-  const password = prompt("Admin password?");
-  if (!password) return;
 
-  const res = await fetch("/api/reviews/delete", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id: r.id, password }),
-  });
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {TEAS.map((tea) => (
+                <CoffeeCard key={tea.id} coffee={tea} />
+              ))}
+            </div>
+          </section>
+        </section>
 
-  const json = await res.json();
+        {/* REVIEWS */}
+        <section id="reviews" className="pt-12 sm:pt-16">
+          <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-white">
+                  Reviews
+                </h2>
+                <p className="mt-1 text-sm text-white/80">
+                  Drop a review and help other coffee lovers pick their next bag ☕✨
+                </p>
+              </div>
+            </div>
 
-  if (!res.ok) {
-    alert("Delete failed: " + (json.error || "Unknown error"));
-    return;
-  }
+            {/* FORM */}
+            <form
+              onSubmit={submitReview}
+              className="mt-6 grid gap-3 sm:grid-cols-3"
+            >
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30"
+              />
 
-  fetchReviews();
-}}>
+              <select
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
+                className="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none focus:border-white/30"
+              >
+                {[5, 4, 3, 2, 1].map((n) => (
+                  <option key={n} value={n} className="text-black">
+                    {n} star{n === 1 ? "" : "s"}
+                  </option>
+                ))}
+              </select>
 
-  Delete
-</button>
+              <button
+                type="submit"
+                className="rounded-xl bg-gradient-to-r from-amber-400 to-yellow-300 px-4 py-3 font-semibold text-black hover:opacity-90 transition"
+              >
+                Submit review
+              </button>
+
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Tell us what you loved…"
+                className="sm:col-span-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/60 outline-none focus:border-white/30 min-h-[120px]"
+              />
+            </form>
+
+            {/* LIST */}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {reviews.length === 0 ? (
+                <p className="text-sm text-white/75">
+                  No reviews yet — be the first 👀
+                </p>
+              ) : (
+                reviews.map((r: any) => (
+                  <div
+                    key={r.id}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="font-semibold text-white">{r.name}</p>
+                      <p className="text-sm text-yellow-300">
+                        {"★".repeat(r.rating || 0)}
+                      </p>
+                    </div>
+
+                    <p className="mt-2 text-sm text-white/85">{r.message}</p>
+
+                    <button
+                      className="mt-3 text-xs text-red-400 hover:text-red-300"
+                      onClick={async () => {
+                        const password = prompt("Admin password?");
+                        if (!password) return;
+
+                        const res = await fetch("/api/reviews/delete", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ id: r.id, password }),
+                        });
+
+                        const json = await res.json();
+
+                        if (!res.ok) {
+                          alert("Delete failed: " + (json.error || "Unknown error"));
+                          return;
+                        }
+
+                        fetchReviews();
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
-        ))
-      )}
-    </div>
-  </div>
-</section>
+        </section>
       </div>
     </main>
   );
