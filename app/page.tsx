@@ -132,6 +132,13 @@ const COFFEES: Coffee[] = [
     limited: false,
     stripe: "https://buy.stripe.com/00wdR96VQ14v76vb7NefC0f",
   },
+  {
+  id: "obsidian-king",
+  name: "Obsidian King",
+  notes: "dark • bold • rich",
+  limited: true,
+  stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
+},
 
   // TEAS (kept in the same array - totally fine)
   {
