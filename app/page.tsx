@@ -156,9 +156,51 @@ const COFFEES: Coffee[] = [
     // ✅ FIXED: removed the comma at the end
     stripe: "https://buy.stripe.com/aFadR92FA28z1Mba3JefC0b",
   },
+  {
+  id: "golden-dunes-15",
+  name: "Golden Dunes (1.5oz)",
+  notes: "Chamomile Honeybush Tea • smooth • comforting",
+  limited: true,
+  stripe: "https://buy.stripe.com/3cI00j7ZU00raiHcbRefC0s",
+},
+{
+  id: "first-light-15",
+  name: "First Light (1.5oz)",
+  notes: "English Breakfast • bold • energizing",
+  limited: true,
+  stripe: "https://buy.stripe.com/00wbJ15RM14vbmLa3JefC0q",
+},
+{
+  id: "desert-heat-15",
+  name: "Desert Heat (1.5oz)",
+  notes: "Ginger Root • warming • spicy",
+  limited: true,
+  stripe: "https://buy.stripe.com/28EdR96VQ9B14Yn7VBefC0o",
+},
+{
+  id: "moon-drift-15",
+  name: "Moon Drift (1.5oz)",
+  notes: "Chamomile Lavender • caffeine-free • calming",
+  limited: true,
+  stripe: "https://buy.stripe.com/eVqdR90xs3cD2Qffo3efC0n",
+},
+{
+  id: "coastal-drift-15",
+  name: "Coastal Drift (1.5oz)",
+  notes: "Earl Grey • smooth • balanced",
+  limited: true,
+  stripe: "https://buy.stripe.com/28E5kD5RMcNdaiH8ZFefC0m",
+},
+{
+  id: "desert-breeze-15",
+  name: "Desert Breeze (1.5oz)",
+  notes: "Spearmint Tea • cool • refreshing",
+  limited: true,
+  stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
+},
 ];
 
-const TEA_IDS = ["soft-horizon", "desert-current"];
+const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light-15","desert-heat-15","moon-drift-15","coastal-drift-15","desert-breeze-15"];
 
 const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
 const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
