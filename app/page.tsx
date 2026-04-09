@@ -139,6 +139,21 @@ const COFFEES: Coffee[] = [
   limited: true,
   stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
 },
+{
+  id: "desert-ember",
+  name: "Desert Ember",
+  notes: "flavored • smooth • warm",
+  limited: true,
+  stripe: "https://buy.stripe.com/eVqeVd2FAeVl4Yn0t9efC0y",
+},
+{
+  id: "golden-hour-creme",
+  name: "Golden Hour Crème",
+  notes: "flavored • smooth • creamy",
+  limited: true,
+  stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
+},
+
 
   // TEAS (kept in the same array - totally fine)
   {
@@ -198,9 +213,16 @@ const COFFEES: Coffee[] = [
   limited: true,
   stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
 },
+{
+  id: "sunset-sangria",
+  name: "Sunset Sangria",
+  notes: "fruity • hibiscus • vibrant",
+  limited: false,
+  stripe: "https://buy.stripe.com/bJe7sL4NI7sT3UjejZefC0A",
+},
 ];
 
-const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light-15","desert-heat-15","moon-drift-15","coastal-drift-15","desert-breeze-15"];
+const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light-15","desert-heat-15","moon-drift-15","coastal-drift-15","desert-breeze-15","sunset-sangria"];
 
 const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
 const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
