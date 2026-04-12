@@ -84,7 +84,7 @@ export default function RootLayout({
             </nav>
 
             {/* Mobile hint */}
-            <div className="sm:hidden text-xs text-white/60">Menu ↑</div>
+            
           </div>
         </header>
 

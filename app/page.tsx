@@ -93,63 +93,63 @@ const COFFEES: Coffee[] = [
   {
     id: "after-dark",
     name: "After Dark Roast",
-    notes: "Indonesian • earthy • cocoa",
+    notes: "Indonesian • Earthy • Cocoa",
     limited: true,
     stripe: "https://buy.stripe.com/3cI6oH3JE3cDfD1gs7efC0e",
   },
   {
     id: "la-buena-hora",
     name: "La Buena Hora",
-    notes: "Mexican • nutty • balanced",
+    notes: "Mexican • Nutty • Balanced",
     limited: true,
     stripe: "https://buy.stripe.com/dRm14n6VQbJ962r6RxefC0h",
   },
   {
     id: "higher-ground",
     name: "Higher Ground",
-    notes: "Organic Peru • smooth • premium",
+    notes: "Organic Peru • Smooth • Premium",
     limited: true,
     stripe: "https://buy.stripe.com/fZudR91BweVl76va3JefC0c",
   },
   {
     id: "anchor",
     name: "Anchor",
-    notes: "Organic Guatemala • smooth • balanced",
+    notes: "Organic Guatemala • Smooth • Balanced",
     limited: true,
     stripe: "https://buy.stripe.com/aFa8wP6VQeVl9eDdfVefC0g",
   },
   {
     id: "still-i-rise",
     name: "Still I Rise",
-    notes: "Colombian • rich • smooth",
+    notes: "Colombian • Rich • Smooth",
     limited: false,
     stripe: "https://buy.stripe.com/5kQ8wP1BwdRh0I7a3JefC0d",
   },
   {
     id: "true-north",
     name: "True North",
-    notes: "Base Camp Blend • bold • steady",
+    notes: "Base Camp Blend • Bold • Steady",
     limited: false,
     stripe: "https://buy.stripe.com/00wdR96VQ14v76vb7NefC0f",
   },
   {
   id: "obsidian-king",
   name: "Obsidian King",
-  notes: "dark • bold • rich",
+  notes: "Dark • Bold • Rich",
   limited: true,
   stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
 },
 {
   id: "desert-ember",
   name: "Desert Ember",
-  notes: "flavored • smooth • warm",
+  notes: "flavored • Smooth • Warm",
   limited: true,
   stripe: "https://buy.stripe.com/eVqeVd2FAeVl4Yn0t9efC0y",
 },
 {
   id: "golden-hour-creme",
   name: "Golden Hour Crème",
-  notes: "flavored • smooth • creamy",
+  notes: "Flavored • Smooth • Creamy",
   limited: true,
   stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
 },
@@ -159,14 +159,14 @@ const COFFEES: Coffee[] = [
   {
     id: "soft-horizon",
     name: "Soft Horizon",
-    notes: "Chamomile • caffeine-free • calming",
+    notes: "Chamomile • Caffeine-Free • Calming",
     limited: true,
     stripe: "https://buy.stripe.com/9B628r3JE14v9eD1xdefC0a",
   },
   {
     id: "desert-current",
     name: "Desert Current",
-    notes: "Moroccan Mint Green Tea • light caffeine • refreshing",
+    notes: "Moroccan Mint Green Tea • Light Caffeine • Refreshing",
     limited: true,
     // ✅ FIXED: removed the comma at the end
     stripe: "https://buy.stripe.com/aFadR92FA28z1Mba3JefC0b",
@@ -174,49 +174,49 @@ const COFFEES: Coffee[] = [
   {
   id: "golden-dunes-15",
   name: "Golden Dunes (1.5oz)",
-  notes: "Chamomile Honeybush Tea • smooth • comforting",
+  notes: "Chamomile Honeybush Tea • Smooth • Comforting",
   limited: true,
   stripe: "https://buy.stripe.com/3cI00j7ZU00raiHcbRefC0s",
 },
 {
   id: "first-light-15",
   name: "First Light (1.5oz)",
-  notes: "English Breakfast • bold • energizing",
+  notes: "English Breakfast • Bold • Energizing",
   limited: true,
   stripe: "https://buy.stripe.com/00wbJ15RM14vbmLa3JefC0q",
 },
 {
   id: "desert-heat-15",
   name: "Desert Heat (1.5oz)",
-  notes: "Ginger Root • warming • spicy",
+  notes: "Ginger Root • Warming • Spicy",
   limited: true,
   stripe: "https://buy.stripe.com/28EdR96VQ9B14Yn7VBefC0o",
 },
 {
   id: "moon-drift-15",
   name: "Moon Drift (1.5oz)",
-  notes: "Chamomile Lavender • caffeine-free • calming",
+  notes: "Chamomile Lavender • Caffeine-Free • Calming",
   limited: true,
   stripe: "https://buy.stripe.com/eVqdR90xs3cD2Qffo3efC0n",
 },
 {
   id: "coastal-drift-15",
   name: "Coastal Drift (1.5oz)",
-  notes: "Earl Grey • smooth • balanced",
+  notes: "Earl Grey • Smooth • Balanced",
   limited: true,
   stripe: "https://buy.stripe.com/28E5kD5RMcNdaiH8ZFefC0m",
 },
 {
   id: "desert-breeze-15",
   name: "Desert Breeze (1.5oz)",
-  notes: "Spearmint Tea • cool • refreshing",
+  notes: "Spearmint Tea • Cool • Refreshing",
   limited: true,
   stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
 },
 {
   id: "sunset-sangria",
   name: "Sunset Sangria",
-  notes: "fruity • hibiscus • vibrant",
+  notes: "Fruity • Hibiscus • Vibrant",
   limited: false,
   stripe: "https://buy.stripe.com/bJe7sL4NI7sT3UjejZefC0A",
 },
@@ -228,7 +228,7 @@ const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
 const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
 
 function CoffeeCard({ coffee }: { coffee: Coffee }) {
-  const label = coffee.limited ? "LIMITED DROP" : "AVAILABLE NOW";
+  const label = coffee.limited ? "SMALL BATCH" : "AVAILABLE NOW";
   const headline = coffee.limited ? `${coffee.name} (Limited)` : coffee.name;
 
   return (
@@ -256,7 +256,7 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
           className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold"
           style={{ background: PALETTE.gold }}
         >
-          Buy {coffee.name}
+          Buy Now
         </a>
       ) : (
         <div
@@ -342,11 +342,8 @@ export default function Home() {
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
-                  href={firstBuyLink === "#shop" ? "#shop" : firstBuyLink}
-                  target={firstBuyLink === "#shop" ? undefined : "_blank"}
-                  rel={
-                    firstBuyLink === "#shop" ? undefined : "noopener noreferrer"
-                  }
+                 href="/shop"
+                 
                   className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
                   style={{ background: PALETTE.gold }}
                 >
@@ -398,11 +395,10 @@ export default function Home() {
                     className="text-xs tracking-[0.35em] uppercase"
                     style={{ color: PALETTE.muted }}
                   >
-                    ROAST PROFILE
+                    OUR ROASTS
                   </p>
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Medium roast designed for daily comfort — not bitter, not sour…
-                    just right.
+                   From smooth medium roasts to bold dark profiles — crafted for balance, comfort, and depth in every cup.
                   </p>
                 </Card>
 
@@ -414,8 +410,7 @@ export default function Home() {
                     SHIPPING
                   </p>
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Packed fresh, sealed tight, and shipped fast so it hits your
-                    doorstep smelling amazing.
+                   Sealed fresh and shipped with care — from our hands to yours, ready for your next perfect cup.
                   </p>
                 </Card>
               </div>
@@ -495,7 +490,7 @@ export default function Home() {
             </div>
 
             <span className="hidden sm:block text-xs tracking-[0.35em] uppercase text-white/70">
-              Limited drops + staples
+             small batch • core collection
             </span>
           </div>
 
@@ -516,7 +511,7 @@ export default function Home() {
                   TEAS
                 </h2>
                 <p className="mt-2 text-white/80">
-                  Whole leaf blends • limited drops
+                  Whole leaf blends • Small Batch
                 </p>
               </div>
 
