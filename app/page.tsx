@@ -4,6 +4,17 @@ import React from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 
+function addToCart(product: any) {
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]")
+
+  const updatedCart = [...existingCart, product]
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart))
+
+  alert(`${product.name} added to cart 🛒`)
+}
+
+
 const BRAND = {
   name: "CNC Inspire Coffee",
   tagline: "ROASTED WITH INTENTION",
@@ -84,6 +95,7 @@ function Card({
 type Coffee = {
   id: string;
   name: string;
+  price: number;
   notes: string;
   limited: boolean;
   stripe: string; // empty string = coming soon / not for sale yet
@@ -94,20 +106,23 @@ const COFFEES: Coffee[] = [
     id: "after-dark",
     name: "After Dark Roast",
     notes: "Indonesian • Earthy • Cocoa",
-    limited: true,
+    price: 23,
+    limited: false,
     stripe: "https://buy.stripe.com/3cI6oH3JE3cDfD1gs7efC0e",
   },
   {
     id: "la-buena-hora",
     name: "La Buena Hora",
     notes: "Mexican • Nutty • Balanced",
-    limited: true,
+    price: 23,
+    limited: false,
     stripe: "https://buy.stripe.com/dRm14n6VQbJ962r6RxefC0h",
   },
   {
     id: "higher-ground",
     name: "Higher Ground",
     notes: "Organic Peru • Smooth • Premium",
+    price: 24,
     limited: true,
     stripe: "https://buy.stripe.com/fZudR91BweVl76va3JefC0c",
   },
@@ -115,13 +130,15 @@ const COFFEES: Coffee[] = [
     id: "anchor",
     name: "Anchor",
     notes: "Organic Guatemala • Smooth • Balanced",
-    limited: true,
+    price: 22,
+    limited: false,
     stripe: "https://buy.stripe.com/aFa8wP6VQeVl9eDdfVefC0g",
   },
   {
     id: "still-i-rise",
     name: "Still I Rise",
     notes: "Colombian • Rich • Smooth",
+    price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/5kQ8wP1BwdRh0I7a3JefC0d",
   },
@@ -129,6 +146,7 @@ const COFFEES: Coffee[] = [
     id: "true-north",
     name: "True North",
     notes: "Base Camp Blend • Bold • Steady",
+    price: 22,
     limited: false,
     stripe: "https://buy.stripe.com/00wdR96VQ14v76vb7NefC0f",
   },
@@ -136,21 +154,24 @@ const COFFEES: Coffee[] = [
   id: "obsidian-king",
   name: "Obsidian King",
   notes: "Dark • Bold • Rich",
-  limited: true,
+  price: 25,
+  limited: false,
   stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
 },
 {
   id: "desert-ember",
   name: "Desert Ember",
   notes: "flavored • Smooth • Warm",
-  limited: true,
+  price: 24,
+  limited: false,
   stripe: "https://buy.stripe.com/eVqeVd2FAeVl4Yn0t9efC0y",
 },
 {
   id: "golden-hour-creme",
   name: "Golden Hour Crème",
   notes: "Flavored • Smooth • Creamy",
-  limited: true,
+  price: 24,
+  limited: false,
   stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
 },
 
@@ -160,14 +181,16 @@ const COFFEES: Coffee[] = [
     id: "soft-horizon",
     name: "Soft Horizon",
     notes: "Chamomile • Caffeine-Free • Calming",
-    limited: true,
+    price: 10,
+    limited: false,
     stripe: "https://buy.stripe.com/9B628r3JE14v9eD1xdefC0a",
   },
   {
     id: "desert-current",
     name: "Desert Current",
     notes: "Moroccan Mint Green Tea • Light Caffeine • Refreshing",
-    limited: true,
+    price: 10,
+    limited: false,
     // ✅ FIXED: removed the comma at the end
     stripe: "https://buy.stripe.com/aFadR92FA28z1Mba3JefC0b",
   },
@@ -175,48 +198,55 @@ const COFFEES: Coffee[] = [
   id: "golden-dunes-15",
   name: "Golden Dunes (1.5oz)",
   notes: "Chamomile Honeybush Tea • Smooth • Comforting",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/3cI00j7ZU00raiHcbRefC0s",
 },
 {
   id: "first-light-15",
   name: "First Light (1.5oz)",
   notes: "English Breakfast • Bold • Energizing",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/00wbJ15RM14vbmLa3JefC0q",
 },
 {
   id: "desert-heat-15",
   name: "Desert Heat (1.5oz)",
   notes: "Ginger Root • Warming • Spicy",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/28EdR96VQ9B14Yn7VBefC0o",
 },
 {
   id: "moon-drift-15",
   name: "Moon Drift (1.5oz)",
   notes: "Chamomile Lavender • Caffeine-Free • Calming",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/eVqdR90xs3cD2Qffo3efC0n",
 },
 {
   id: "coastal-drift-15",
   name: "Coastal Drift (1.5oz)",
   notes: "Earl Grey • Smooth • Balanced",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/28E5kD5RMcNdaiH8ZFefC0m",
 },
 {
   id: "desert-breeze-15",
   name: "Desert Breeze (1.5oz)",
   notes: "Spearmint Tea • Cool • Refreshing",
-  limited: true,
+  price: 10,
+  limited: false,
   stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
 },
 {
   id: "sunset-sangria",
   name: "Sunset Sangria",
   notes: "Fruity • Hibiscus • Vibrant",
+  price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/bJe7sL4NI7sT3UjejZefC0A",
 },
@@ -229,7 +259,7 @@ const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
 
 function CoffeeCard({ coffee }: { coffee: Coffee }) {
   const label = coffee.limited ? "SMALL BATCH" : "AVAILABLE NOW";
-  const headline = coffee.limited ? `${coffee.name} (Limited)` : coffee.name;
+  const headline = coffee.name;
 
   return (
     <div style={styles.squareCard} className="p-6">
@@ -249,15 +279,26 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
       </p>
 
       {coffee.stripe ? (
-        <a
-          href={coffee.stripe}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold"
-          style={{ background: PALETTE.gold }}
-        >
-          Buy Now
-        </a>
+       <>
+  <a
+    href={coffee.stripe}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold"
+    style={{ background: PALETTE.gold }}
+  >
+    Buy Now
+  </a>
+
+  <button
+    onClick={() => addToCart(coffee)}
+    className="mt-2 inline-block rounded-full px-5 py-2 text-sm font-semibold"
+    style={{ background: "#333", color: "#fff" }}
+  >
+    Add to Cart
+  </button>
+</>
+        
       ) : (
         <div
           className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold opacity-70"
