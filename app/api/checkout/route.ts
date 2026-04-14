@@ -35,10 +35,10 @@ export async function POST(request: Request) {
 
     const totalQuantity = groupedItems.reduce((sum, item) => sum + item.quantity, 0);
 
-    let shippingAmount = 0;
-    if (totalQuantity === 1) shippingAmount = 500;
-    if (totalQuantity === 2) shippingAmount = 800;
-    if (totalQuantity >= 3) shippingAmount = 0;
+   let shippingAmount = 0;
+if (totalQuantity === 1) shippingAmount = 500;
+if (totalQuantity >= 2) shippingAmount = 0;
+
 
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = groupedItems.map(
       (item) => ({
@@ -53,7 +53,19 @@ export async function POST(request: Request) {
         },
       })
     );
-
+if (shippingAmount > 0) {
+  line_items.push({
+    quantity: 1,
+    price_data: {
+      currency: "usd",
+      product_data: {
+        name: "Shipping",
+        description: "Standard Shipping",
+      },
+      unit_amount: shippingAmount,
+    },
+  });
+}
     const origin = new URL(request.url).origin;
 
     const session = await stripe.checkout.sessions.create({
@@ -64,18 +76,7 @@ export async function POST(request: Request) {
       shipping_address_collection: {
         allowed_countries: ["US"],
       },
-      shipping_options: [
-        {
-          shipping_rate_data: {
-            type: "fixed_amount",
-            fixed_amount: {
-              amount: shippingAmount,
-              currency: "usd",
-            },
-            display_name: shippingAmount === 0 ? "Free Shipping" : "Standard Shipping",
-          },
-        },
-      ],
+     
     });
 
     return NextResponse.json({ url: session.url });

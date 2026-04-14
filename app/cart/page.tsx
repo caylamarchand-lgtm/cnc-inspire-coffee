@@ -71,7 +71,9 @@ const subtotal = groupedItems.reduce((sum, item) => {
   return sum + item.price * item.quantity;
 }, 0);
 
-
+const itemCount = groupedItems.reduce((sum, item) => sum + item.quantity, 0);
+const shipping = itemCount === 1 ? 5 : 0;
+const total = subtotal + shipping;
   return (
     <main className="min-h-screen px-6 py-10" style={{ background: "#2b4447" }}>
       <div className="mx-auto max-w-3xl">
@@ -139,8 +141,20 @@ const subtotal = groupedItems.reduce((sum, item) => {
     <span className="text-xl font-semibold text-[#2b1b1a]">
       ${subtotal.toFixed(2)}
     </span>
-  </div>
+     </div>
+<div className="flex justify-between text-sm mt-2">
+  <span className="text-[#2b1b1a]">Shipping</span>
+  <span className="text-[#2b1b1a]">
+    {shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+  </span>
+</div>
 
+<div className="flex justify-between text-lg font-semibold mt-3">
+  <span className="text-[#2b1b1a]">Total</span>
+  <span className="text-[#2b1b1a]">
+    ${total.toFixed(2)}
+  </span>
+</div>
   <div className="flex flex-wrap gap-3">
     <button
       onClick={clearCart}
