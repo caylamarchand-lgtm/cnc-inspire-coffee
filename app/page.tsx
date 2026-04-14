@@ -5,13 +5,14 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 
 function addToCart(product: any) {
-  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]")
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  const updatedCart = [...existingCart, product]
+  const updatedCart = [...existingCart, product];
 
-  localStorage.setItem("cart", JSON.stringify(updatedCart))
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-  alert(`${product.name} added to cart 🛒`)
+  // 🔥 THIS LINE FIXES EVERYTHING
+  window.dispatchEvent(new Event("storage"));
 }
 
 
@@ -381,31 +382,39 @@ export default function Home() {
                 California mornings and golden-hour resets.
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                 href="/shop"
-                 
-                  className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
-                  style={{ background: PALETTE.gold }}
-                >
-                  Shop Coffee
-                </a>
+             <div className="mt-6 flex flex-wrap items-center gap-3">
+  <a
+    href="/shop"
+    className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
+    style={{ background: PALETTE.gold }}
+  >
+    Shop Coffee
+  </a>
 
-                <a
-                  href="#story"
-                  className="rounded-full border border-black/20 bg-black/5 px-5 py-2 text-sm font-semibold text-black"
-                >
-                  Our Story
-                </a>
+  <a
+    href="/shop"
+    className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
+    style={{ background: PALETTE.gold }}
+  >
+    Shop Tea
+  </a>
 
-                <a
-                  href="#contact"
-                  className="rounded-full border border-black/20 bg-black/5 px-5 py-2 text-sm font-semibold text-black"
-                >
-                  Contact
-                </a>
-              </div>
+  <a
+    href="#story"
+    className="rounded-full border border-black/20 bg-black/5 px-5 py-2 text-sm font-semibold"
+  >
+    Our Story
+  </a>
 
+  <a
+    href="#contact"
+    className="rounded-full border border-black/20 bg-black/5 px-5 py-2 text-sm font-semibold"
+  >
+    Contact
+  </a>
+
+  
+</div>
               <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
                   { title: "Fresh", desc: "small-batch roasted" },

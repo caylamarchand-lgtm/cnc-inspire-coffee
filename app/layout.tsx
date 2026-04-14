@@ -1,3 +1,4 @@
+import CartButton from "./components/CartButton";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Image from "next/image";
@@ -23,6 +24,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+ 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -81,6 +83,7 @@ export default function RootLayout({
               <a href="#contact" className="hover:text-white transition">
                 Contact
               </a>
+           <CartButton />
             </nav>
 
             {/* Mobile hint */}
