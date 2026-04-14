@@ -85,7 +85,9 @@ export default function RootLayout({
               </a>
            <CartButton />
             </nav>
-
+<div className="sm:hidden mt-3 flex justify-end">
+  <CartButton />
+</div>
             {/* Mobile hint */}
             
           </div>
