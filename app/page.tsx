@@ -12,7 +12,7 @@ function addToCart(product: any) {
   localStorage.setItem("cart", JSON.stringify(updatedCart));
 
   // 🔥 THIS LINE FIXES EVERYTHING
-  window.dispatchEvent(new Event("storage"));
+  window.dispatchEvent(new Event("cartUpdated"));
 }
 
 
