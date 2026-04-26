@@ -9,6 +9,7 @@ type CartItem = {
   notes?: string;
   price: number;
   stripe?: string;
+  freeShipping?: boolean;
 };
 
 export default function CartPage() {
@@ -72,8 +73,16 @@ const subtotal = groupedItems.reduce((sum, item) => {
 }, 0);
 
 const itemCount = groupedItems.reduce((sum, item) => sum + item.quantity, 0);
-const shipping = itemCount === 1 ? 5 : 0;
+
+const fullSizeCount = groupedItems.reduce((sum, item) => {
+  return item.price >= 22 ? sum + item.quantity : sum;
+}, 0);
+
+const hasFreeShipping = groupedItems.some(item => item.freeShipping);
+const shipping = hasFreeShipping ? 0 : fullSizeCount >= 2 ? 0 : 5;
+
 const total = subtotal + shipping;
+
   return (
     <main className="min-h-screen px-6 py-10" style={{ background: "#2b4447" }}>
       <div className="mx-auto max-w-3xl">

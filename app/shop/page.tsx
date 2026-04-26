@@ -73,6 +73,26 @@ export default function ShopPage() {
             </div>
           ))}
         </div>
+        <section className="mt-12 rounded-3xl border border-white/20 bg-white/10 p-6 text-white">
+  <p className="text-xs uppercase tracking-widest text-yellow-300 mb-2">
+    TRY ME FIRST
+  </p>
+
+  <h2 className="text-2xl font-semibold mb-2">
+    2oz Coffee Samples
+  </h2>
+
+  <p className="text-sm text-white/70 mb-4">
+    Not sure which roast is your vibe yet? Try our 2oz sample bags before committing ☕
+  </p>
+
+  <a
+    href="/samples"
+    className="inline-block bg-yellow-400 text-black font-semibold px-5 py-2 rounded-full hover:bg-yellow-300 transition"
+  >
+    View Sample Collection
+  </a>
+</section>
       </div>
     </main>
   );
