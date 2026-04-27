@@ -1,3 +1,12 @@
+"use client"
+
+function addToCart(product: any) {
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const updatedCart = [...existingCart, product];
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+  window.dispatchEvent(new Event("cartUpdated"));
+}
+
 export default function ShopPage() {
   const coffees = [
     {
@@ -64,12 +73,18 @@ export default function ShopPage() {
               <h2 className="text-xl font-semibold">{coffee.name}</h2>
               <p className="mt-2 text-white/70">{coffee.desc}</p>
 
-              <a
-                href={coffee.link}
-                className="mt-4 inline-block rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black"
-              >
-                Buy {coffee.name}
-              </a>
+             <button
+  onClick={() =>
+    addToCart({
+      id: coffee.name,
+      name: coffee.name,
+      price: 24.99,
+    })
+  }
+  className="mt-4 inline-block rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black"
+>
+  Add to Cart
+</button>
             </div>
           ))}
         </div>
