@@ -35,9 +35,20 @@ export async function POST(request: Request) {
 
     const totalQuantity = groupedItems.reduce((sum, item) => sum + item.quantity, 0);
 
-   let shippingAmount = 0;
-if (totalQuantity === 1) shippingAmount = 500;
-if (totalQuantity >= 2) shippingAmount = 0;
+  const hasSamplePack = groupedItems.some((item) =>
+  item.name.toLowerCase().includes("sample")
+);
+
+let shippingAmount = 0;
+
+if (!hasSamplePack && totalQuantity === 1) {
+  shippingAmount = 500;
+}
+
+if (totalQuantity >= 2) {
+  shippingAmount = 0;
+}
+
 
 
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = groupedItems.map(

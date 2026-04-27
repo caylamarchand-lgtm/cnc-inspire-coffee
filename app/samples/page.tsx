@@ -22,6 +22,13 @@ const sampleFlavors = [
   "Golden Hour Crème",
 ];
 
+const sampleStripeLinks = {
+  1: "https://buy.stripe.com/28E9ATbc6fZpeyXcbRefC0B",
+  3: "https://buy.stripe.com/4gM6oHfsm8wXgH53FlefC0C",
+  5: "https://buy.stripe.com/aFa5kDgwq28zbmLfo3efC0E",
+};
+
+
 export default function SamplesPage() {
   const [selected, setSelected] = React.useState<string[]>([]);
 
@@ -40,12 +47,14 @@ export default function SamplesPage() {
     }
 
     addToCart({
-      id: `sample-pack-${count}-${Date.now()}`,
-      name: `${count} Sample Pack`,
-      notes: selected.join(", "),
-      price,
-      freeShipping,
-    });
+  id: `sample-pack-${count}-${Date.now()}`,
+  name: `${count} Sample Pack`,
+  notes: selected.join(", "),
+  price,
+  freeShipping,
+  stripe: sampleStripeLinks[count as 1 | 3 | 5],
+});
+
 
     setSelected([]);
   }
