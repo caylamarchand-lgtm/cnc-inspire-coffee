@@ -33,21 +33,36 @@ export async function POST(request: Request) {
 
     const groupedItems = Object.values(groupedCart);
 
-    const totalQuantity = groupedItems.reduce((sum, item) => sum + item.quantity, 0);
-
-  const hasSamplePack = groupedItems.some((item) =>
-  item.name.toLowerCase().includes("sample")
+   const totalQuantity = groupedItems.reduce(
+  (sum, item) => sum + item.quantity,
+  0
 );
 
-let shippingAmount = 0;
+const qualifyingCoffeeCount = groupedItems.reduce((sum, item) => {
+  const name = item.name.toLowerCase();
 
-if (!hasSamplePack && totalQuantity === 1) {
-  shippingAmount = 500;
-}
+  const qualifiesForFreeShipping =
+    !name.includes("sample") &&
+    !name.includes("tea") &&
+    !name.includes("honey") &&
+    !name.includes("sticker") &&
+    !name.includes("chocolate");
 
-if (totalQuantity >= 2) {
+  return qualifiesForFreeShipping
+    ? sum + item.quantity
+    : sum;
+}, 0);
+
+const hasFiveSamplePack = groupedItems.some((item) =>
+  item.name.toLowerCase().includes("5 sample")
+);
+
+let shippingAmount = 500;
+
+if (qualifyingCoffeeCount >= 2 || hasFiveSamplePack) {
   shippingAmount = 0;
 }
+
 
 
 
