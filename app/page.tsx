@@ -414,7 +414,7 @@ export default function Home() {
   </a>
 
   <a
-    href="/shop?section=tea"
+    href="#tea"
     className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
     style={{ background: PALETTE.gold }}
   >
