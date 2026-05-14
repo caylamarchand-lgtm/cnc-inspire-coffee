@@ -106,7 +106,7 @@ const COFFEES: Coffee[] = [
   {
     id: "after-dark",
     name: "After Dark Roast",
-    notes: "Indonesian • Earthy • Cocoa",
+    notes: "Indonesian whole bean coffee • Earthy cocoa notes • Bold dark roast",
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/3cI6oH3JE3cDfD1gs7efC0e",
@@ -114,7 +114,7 @@ const COFFEES: Coffee[] = [
   {
     id: "la-buena-hora",
     name: "La Buena Hora",
-    notes: "Mexican • Nutty • Balanced",
+    notes: "Mexican whole bean coffee • Smooth nutty flavor • Balanced medium roast",
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/dRm14n6VQbJ962r6RxefC0h",
@@ -122,7 +122,7 @@ const COFFEES: Coffee[] = [
   {
     id: "higher-ground",
     name: "Higher Ground",
-    notes: "Organic Peru • Smooth • Premium",
+    notes: "Organic Peru whole bean coffee • Smooth premium roast • Balanced finish",
     price: 24,
     limited: true,
     stripe: "https://buy.stripe.com/fZudR91BweVl76va3JefC0c",
@@ -130,7 +130,7 @@ const COFFEES: Coffee[] = [
   {
     id: "anchor",
     name: "Anchor",
-    notes: "Organic Guatemala • Smooth • Balanced",
+    notes: "Organic Guatemala whole bean coffee • Smooth balanced flavor • Medium roast",
     price: 22,
     limited: false,
     stripe: "https://buy.stripe.com/aFa8wP6VQeVl9eDdfVefC0g",
@@ -138,7 +138,7 @@ const COFFEES: Coffee[] = [
   {
     id: "still-i-rise",
     name: "Still I Rise",
-    notes: "Colombian • Rich • Smooth",
+    notes: "Colombian whole bean coffee • Rich smooth flavor • Easy everyday roast",
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/5kQ8wP1BwdRh0I7a3JefC0d",
@@ -146,7 +146,7 @@ const COFFEES: Coffee[] = [
   {
     id: "true-north",
     name: "True North",
-    notes: "Base Camp Blend • Bold • Steady",
+    notes: "Signature whole bean blend • Bold balanced flavor • Smooth finish",
     price: 22,
     limited: false,
     stripe: "https://buy.stripe.com/00wdR96VQ14v76vb7NefC0f",
@@ -154,7 +154,7 @@ const COFFEES: Coffee[] = [
   {
   id: "obsidian-king",
   name: "Obsidian King",
-  notes: "Dark • Bold • Rich",
+  notes: "Dark roast whole bean coffee • Bold smoky flavor • Rich smooth finish",
   price: 25,
   limited: false,
   stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
@@ -162,7 +162,7 @@ const COFFEES: Coffee[] = [
 {
   id: "desert-ember",
   name: "Desert Ember",
-  notes: "flavored • Smooth • Warm",
+  notes: "Flavored whole bean coffee • Warm mocha-inspired flavor • Smooth finish",
   price: 24,
   limited: false,
   stripe: "https://buy.stripe.com/eVqeVd2FAeVl4Yn0t9efC0y",
@@ -170,7 +170,7 @@ const COFFEES: Coffee[] = [
 {
   id: "golden-hour-creme",
   name: "Golden Hour Crème",
-  notes: "Flavored • Smooth • Creamy",
+  notes: "Vanilla crème flavored whole bean coffee • Smooth creamy finish",
   price: 24,
   limited: false,
   stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
@@ -182,7 +182,7 @@ const COFFEES: Coffee[] = [
   {
     id: "soft-horizon",
     name: "Soft Horizon",
-    notes: "Chamomile • Caffeine-Free • Calming",
+    notes: "Whole leaf chamomile tea • Caffeine-free herbal blend • Smooth calming finish",
     price: 10,
     limited: false,
     stripe: "https://buy.stripe.com/9B628r3JE14v9eD1xdefC0a",
@@ -190,7 +190,8 @@ const COFFEES: Coffee[] = [
   {
     id: "desert-current",
     name: "Desert Current",
-    notes: "Moroccan Mint Green Tea • Light Caffeine • Refreshing",
+    notes: "Whole leaf Moroccan mint green tea • Light caffeine • Crisp refreshing flavor",
+
     price: 10,
     limited: false,
     // ✅ FIXED: removed the comma at the end
@@ -199,7 +200,7 @@ const COFFEES: Coffee[] = [
   {
   id: "golden-dunes-15",
   name: "Golden Dunes (1.5oz)",
-  notes: "Chamomile Honeybush Tea • Smooth • Comforting",
+  notes: "Whole leaf honeybush herbal tea • Smooth comforting flavor • Caffeine-free blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/3cI00j7ZU00raiHcbRefC0s",
@@ -207,7 +208,7 @@ const COFFEES: Coffee[] = [
 {
   id: "first-light-15",
   name: "First Light (1.5oz)",
-  notes: "English Breakfast • Bold • Energizing",
+  notes: "Whole leaf English breakfast tea • Bold energizing black tea blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/00wbJ15RM14vbmLa3JefC0q",
@@ -215,7 +216,7 @@ const COFFEES: Coffee[] = [
 {
   id: "desert-heat-15",
   name: "Desert Heat (1.5oz)",
-  notes: "Ginger Root • Warming • Spicy",
+  notes: "Whole leaf ginger root herbal tea • Warming spicy flavor • Caffeine-free blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/28EdR96VQ9B14Yn7VBefC0o",
@@ -223,7 +224,7 @@ const COFFEES: Coffee[] = [
 {
   id: "moon-drift-15",
   name: "Moon Drift (1.5oz)",
-  notes: "Chamomile Lavender • Caffeine-Free • Calming",
+  notes: "Whole leaf chamomile lavender tea • Caffeine-free herbal blend • Relaxing finish",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/eVqdR90xs3cD2Qffo3efC0n",
@@ -231,7 +232,7 @@ const COFFEES: Coffee[] = [
 {
   id: "coastal-drift-15",
   name: "Coastal Drift (1.5oz)",
-  notes: "Earl Grey • Smooth • Balanced",
+  notes: "Whole leaf Earl Grey tea • Smooth balanced black tea blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/28E5kD5RMcNdaiH8ZFefC0m",
@@ -239,7 +240,7 @@ const COFFEES: Coffee[] = [
 {
   id: "desert-breeze-15",
   name: "Desert Breeze (1.5oz)",
-  notes: "Spearmint Tea • Cool • Refreshing",
+  notes: "Whole leaf spearmint herbal tea • Cool refreshing flavor • Caffeine-free blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
@@ -247,12 +248,32 @@ const COFFEES: Coffee[] = [
 {
   id: "sunset-sangria",
   name: "Sunset Sangria",
-  notes: "Fruity • Hibiscus • Vibrant",
+  notes: "Whole leaf hibiscus fruit tea • Vibrant fruity flavor • Refreshing herbal blend",
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/bJe7sL4NI7sT3UjejZefC0A",
 },
+{
+  id: "desert-fuel",
+  name: "Desert Fuel",
+  notes: "Dark chocolate espresso beans • Bold crunch • Rich coffee bite",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/4gMaEX7ZUdRhaiHcbRefC0F",
+},
+
+{
+  id: "golden-hour-bites",
+  name: "Golden Hour Bites",
+  notes: "Dark chocolate mocha centers • Smooth creamy filling • Sweet finish",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G",
+},
+
 ];
+
+
 
 const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light-15","desert-heat-15","moon-drift-15","coastal-drift-15","desert-breeze-15","sunset-sangria"];
 
@@ -393,7 +414,7 @@ export default function Home() {
   </a>
 
   <a
-    href="/shop"
+    href="/shop?section=tea"
     className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
     style={{ background: PALETTE.gold }}
   >
@@ -472,8 +493,8 @@ export default function Home() {
               <div className="flex items-start gap-4">
                 <div className="rounded-2xl bg-[#F6F1E6] p-2 ring-1 ring-black/10">
                   <Image
-                    src="/the-north.jpg"
-                    alt="The North - Base Camp Blend"
+                    src="/coffee-treats.jpg"
+                   alt="Desert Fuel and Golden Hour Bites chocolate covered coffee beans"
                     width={240}
                     height={320}
                     className="rounded-xl object-cover"
@@ -486,29 +507,53 @@ export default function Home() {
                     className="text-xs tracking-[0.35em] uppercase"
                     style={{ color: PALETTE.muted }}
                   >
-                    SIGNATURE ROAST
+                    New Coffee Bean Treats 
                   </p>
 
                   <h3
                     className="mt-1 text-xl font-semibold"
                     style={{ color: PALETTE.ink }}
                   >
-                    The North
+                   Desert Fuel + Golden Hour Bites 
                   </h3>
 
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Base Camp Blend — bold, balanced, and smooth with steady depth
-                    and a clean finish.
-                  </p>
+                    Dark chocolate espresso beans and creamy mocha-filled bites made for coffee lovers.{" "}
+
+</p>
+<div className="mt-4 flex flex-wrap gap-3">
+  <a
+    href="https://buy.stripe.com/4gMaEX7ZUdRhaiHcbRefC0F"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
+    style={{ background: "#3a2a1f", color: "#fff", textDecoration: "none" }}
+  >
+    Buy Desert Fuel
+  </a>
+
+  <a
+    href="https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
+    style={{ background: "#c89b5d", color: "#fff", textDecoration: "none" }}
+  >
+    Buy Golden Hour Bites
+  </a>
+</div>
+
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3">
                 {[
-                  { k: "BLEND", v: "Base Camp Blend" },
-                  { k: "ROAST LEVEL", v: "Medium-Dark" },
-                  { k: "PROFILE", v: "bold · balanced · smooth" },
-                  { k: "BEST FOR", v: "daily drinkers & strong mornings" },
+                { k: "BUY DESERT FUEL", v: "Dark chocolate espresso beans • bold crunch • rich coffee bite" },
+{ k: "BUY GOLDEN HOUR BITES", v: "Dark chocolate mocha centers • smooth creamy filling • sweet finish" },
+
+{ k: "SIZE", v: "2oz gourmet chocolate coffee treats" },
+{ k: "BEST FOR", v: "coffee lovers & sweet caffeine cravings" },
+
                 ].map((row) => (
                   <div key={row.k} className="rounded-2xl p-4" style={styles.card}>
                     <p
@@ -574,7 +619,7 @@ export default function Home() {
           <div className="my-14 h-px w-full bg-white/20" />
 
           {/* TEAS (own beautiful bundle) */}
-          <section className="rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-6 sm:p-8">
+          <section id="tea" className="scroll-mt-24 rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-6 sm:p-8">
             <div className="flex items-end justify-between gap-6">
               <div>
                 <h2 className="text-4xl font-semibold tracking-wide text-white">
