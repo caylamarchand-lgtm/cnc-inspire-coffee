@@ -524,8 +524,6 @@ export default function Home() {
 <div className="mt-4 flex flex-wrap gap-3">
   <a
     href="https://buy.stripe.com/4gMaEX7ZUdRhaiHcbRefC0F"
-    target="_blank"
-    rel="noopener noreferrer"
     className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
     style={{ background: "#3a2a1f", color: "#fff", textDecoration: "none" }}
   >
@@ -534,8 +532,6 @@ export default function Home() {
 
   <a
     href="https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G"
-    target="_blank"
-    rel="noopener noreferrer"
     className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
     style={{ background: "#c89b5d", color: "#fff", textDecoration: "none" }}
   >

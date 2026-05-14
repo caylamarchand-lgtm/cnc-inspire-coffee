@@ -58,7 +58,18 @@ const hasFiveSamplePack = groupedItems.some((item) =>
 );
 
 let shippingAmount = 500;
+const hasChocolateBeans = groupedItems.some((item) => {
+  const name = item.name.toLowerCase();
 
+  return (
+    name.includes("desert fuel") ||
+    name.includes("golden hour")
+  );
+});
+
+if (hasChocolateBeans) {
+  shippingAmount = 400;
+}
 if (qualifyingCoffeeCount >= 2 || hasFiveSamplePack) {
   shippingAmount = 0;
 }
