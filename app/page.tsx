@@ -519,7 +519,9 @@ export default function Home() {
 
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
                     Dark chocolate espresso beans and creamy mocha-filled bites made for coffee lovers.{" "}
-
+                    </p>
+<p className="mt-3 text-xs font-semibold" style={{ color: PALETTE.ink }}>
+  Heat-Safe Shipping Note: Chocolate coffee treats ship Monday–Wednesday only to help prevent weekend delays and melting in transit.
 </p>
 <div className="mt-4 flex flex-wrap gap-3">
   <a
