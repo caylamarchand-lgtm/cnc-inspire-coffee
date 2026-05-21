@@ -79,7 +79,8 @@ const fullSizeCount = groupedItems.reduce((sum, item) => {
 }, 0);
 
 const hasFreeShipping = groupedItems.some(item => item.freeShipping);
-const shipping = hasFreeShipping ? 0 : fullSizeCount >= 2 ? 0 : 5;
+const shipping = hasFreeShipping || fullSizeCount >= 2 || subtotal >= 50 ? 0 : 5;
+
 
 const total = subtotal + shipping;
 

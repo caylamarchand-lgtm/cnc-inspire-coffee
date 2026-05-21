@@ -41,14 +41,14 @@ export async function POST(request: Request) {
 const qualifyingCoffeeCount = groupedItems.reduce((sum, item) => {
   const name = item.name.toLowerCase();
 
-  const qualifiesForFreeShipping =
+  const qualifies =
     !name.includes("sample") &&
     !name.includes("tea") &&
     !name.includes("honey") &&
     !name.includes("sticker") &&
     !name.includes("chocolate");
 
-  return qualifiesForFreeShipping
+  return qualifies
     ? sum + item.quantity
     : sum;
 }, 0);
@@ -56,6 +56,15 @@ const qualifyingCoffeeCount = groupedItems.reduce((sum, item) => {
 const hasFiveSamplePack = groupedItems.some((item) =>
   item.name.toLowerCase().includes("5 sample")
 );
+
+const subtotal = groupedItems.reduce(
+  (sum, item) => sum + item.price * item.quantity,
+  0
+);
+
+
+const qualifiesForFreeShipping =
+  qualifyingCoffeeCount >= 2 || subtotal >= 5000;
 
 let shippingAmount = 500;
 const hasChocolateBeans = groupedItems.some((item) => {
@@ -70,9 +79,10 @@ const hasChocolateBeans = groupedItems.some((item) => {
 if (hasChocolateBeans) {
   shippingAmount = 400;
 }
-if (qualifyingCoffeeCount >= 2 || hasFiveSamplePack) {
+if (qualifiesForFreeShipping) {
   shippingAmount = 0;
 }
+
 
 
 
