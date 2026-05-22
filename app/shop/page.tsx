@@ -59,7 +59,7 @@ export default function ShopPage() {
               <h3 className="text-xl font-semibold text-pink-300">Fun Honey Bar</h3>
 
               <p className="mt-2 text-white/70">
-                Coming soon: Strawberry • Watermelon • Blueberry • Tropical Punch • Peach • Mango
+                Coming soon: Watermelon • Blueberry • Tropical Punch • Peach • Mango
               </p>
 
               <button
