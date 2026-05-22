@@ -421,6 +421,14 @@ export default function Home() {
     Shop Tea
   </a>
 
+<a
+  href="/shop#sweet-add-ons"
+  className="rounded-full px-5 py-2 text-sm font-semibold inline-block"
+ style={{ background: "#f9a8d4", color: "#000"}}>
+
+  Sweet Add-Ons
+</a>
+
   <a
     href="#story"
     className="rounded-full border border-black/20 bg-black/5 px-5 py-2 text-sm font-semibold"
