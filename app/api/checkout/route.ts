@@ -67,7 +67,17 @@ const qualifiesForFreeShipping =
   qualifyingCoffeeCount >= 2 || subtotal >= 5000;
 
 let shippingAmount = 500;
+const hasHoneyOrRockCandy = groupedItems.some((item) => {
+  const name = item.name.toLowerCase();
+
+  return (
+    name.includes("fun honey") ||
+    name.includes("rock candy")
+  );
+});
+
 const hasChocolateBeans = groupedItems.some((item) => {
+ 
   const name = item.name.toLowerCase();
 
   return (
@@ -78,6 +88,9 @@ const hasChocolateBeans = groupedItems.some((item) => {
 
 if (hasChocolateBeans) {
   shippingAmount = 400;
+}
+if (hasHoneyOrRockCandy) {
+  shippingAmount = 350;
 }
 if (qualifiesForFreeShipping) {
   shippingAmount = 0;

@@ -1,4 +1,5 @@
 "use client";
+import { useState} from "react";
 
 function addToCart(product: any) {
   const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -8,6 +9,33 @@ function addToCart(product: any) {
 }
 
 export default function ShopPage() {
+
+ const [honeyFlavors, setHoneyFlavors] = useState<Record<string, number>>({});
+const [rockCandyFlavors, setRockCandyFlavors] = useState<Record<string, number>>({});
+
+
+const updateFlavorQty = (
+  itemType: "honey" | "rockCandy",
+  flavor: string,
+  qty: number
+) => {
+  const cleanQty = Math.max(0, qty);
+
+  if (itemType === "honey") {
+    setHoneyFlavors((prev) => ({ ...prev, [flavor]: cleanQty }));
+  } else {
+    setRockCandyFlavors((prev) => ({ ...prev, [flavor]: cleanQty }));
+  }
+};
+
+const formatFlavorMix = (flavors: Record<string, number>) => {
+  return Object.entries(flavors)
+    .filter(([_, qty]) => qty > 0)
+    .map(([flavor, qty]) => `${qty} ${flavor}`)
+    .join(", ");
+};
+
+
   const coffees = [
     { name: "True North", desc: "Base Camp Blend • bold • steady" },
     { name: "Still I Rise", desc: "Colombian • rich • smooth" },
@@ -21,7 +49,9 @@ export default function ShopPage() {
   ];
 
   return (
+  <>
     <main className="min-h-screen bg-black text-white px-6 py-10">
+
       <div className="mx-auto max-w-5xl">
         <h1 className="text-3xl font-bold">Shop Coffee</h1>
         <p className="mt-2 text-white/70">Browse all available coffees below.</p>
@@ -58,34 +88,66 @@ export default function ShopPage() {
             <div className="rounded-2xl bg-white/10 p-5">
               <h3 className="text-xl font-semibold text-pink-300">Fun Honey Bar</h3>
 
-              <p className="mt-2 text-white/70">
-                Coming soon: Watermelon • Blueberry • Tropical Punch • Peach • Mango
-              </p>
+              <p className="mt-2 text-sm text-white/80 leading-6">
+  Pick your favorite Honey Sticks
+</p>
+<div className="mt-4 grid grid-cols-2 gap-2">
+  {[
+    "Banana",
+    "Blueberry",
+    "Chocolate",
+    "Cinnamon",
+    "Grape",
+    "Lemon",
+    "Orange",
+    "Peach",
+    "Piña Colada",
+    "Pink Lemonade",
+    "Raspberry",
+    "Sour Blue Raspberry",
+    "Watermelon",
+  ].map((flavor) => (
+    <label key={flavor} className="flex items-center justify-between gap-2 text-sm text-white">
+      <span>{flavor}</span>
+      <input
+        type="number"
+        min="0"
+        value={honeyFlavors[flavor] || 0}
+        onChange={(e) =>
+          updateFlavorQty("honey", flavor, Number(e.target.value))
+        }
+        className="w-14 rounded bg-black/30 border border-white/20 px-2 py-1 text-white"
+      />
+    </label>
+  ))}
+</div>
+
 
               <button
                 onClick={() =>
                   addToCart({
-                    id: "fun-honey-10",
-                    name: "Fun Honey Bar - 10 Pack",
+                    id: `fun-honey-10-${formatFlavorMix(honeyFlavors)}`,
+name: `Fun Honey Bar - 10 Pack - ${formatFlavorMix(honeyFlavors)}`,
+
                     price: 6,
                   })
                 }
                 className="mt-4 rounded-full bg-pink-400 px-5 py-2 font-semibold text-black"
               >
-                10 Pack - $6 coming soon
+                10 Pack - $6
               </button>
 
               <button
                 onClick={() =>
                   addToCart({
-                    id: "fun-honey-20",
-                    name: "Fun Honey Bar - 20 Pack",
+                    id: `fun-honey-20-${formatFlavorMix(honeyFlavors)}`,
+name: `Fun Honey Bar - 20 Pack - ${formatFlavorMix(honeyFlavors)}`,
                     price: 10,
                   })
                 }
                 className="mt-3 rounded-full bg-pink-400 px-5 py-2 font-semibold text-black"
               >
-                20 Pack - $10 coming soon
+                20 Pack - $10
               </button>
             </div>
 
@@ -175,33 +237,62 @@ export default function ShopPage() {
               <h3 className="text-xl font-semibold text-purple-300">Rock Candy Sticks</h3>
 
               <p className="mt-2 text-white/70">
-                Coming soon: Blue Raspberry • Cotton Candy • Cherry • Watermelon
+               Pick your favorite rock candy flavors
               </p>
+
+<div className="mt-4 grid grid-cols-2 gap-2">
+  {[
+    "Banana",
+    "Blue Raspberry",
+    "Cherry",
+    "Cotton Candy",
+    "Natural Sugar"
+  ].map((flavor) => (
+ <label
+  key={flavor}
+  className="flex items-center justify-between gap-2 text-sm text-white"
+>
+  <span className="leading-tight">{flavor}</span>
+
+  <input
+    type="number"
+    min="0"
+    value={rockCandyFlavors[flavor] || 0}
+    onChange={(e) =>
+      updateFlavorQty("rockCandy", flavor, Number(e.target.value))
+    }
+    className="w-12 rounded bg-black/30 border border-white/20 px-2 py-1 text-white"
+    />
+</label>
+  ))}
+</div>
 
               <button
                 onClick={() =>
                   addToCart({
                     id: "rock-candy-3",
-                    name: "Rock Candy - 3 Pack",
+                   name: `Rock Candy - 3 Pack - ${formatFlavorMix(rockCandyFlavors)}`,
+
                     price: 6,
                   })
                 }
                 className="mt-4 rounded-full bg-purple-400 px-5 py-2 font-semibold text-black"
               >
-                Pick Any 3 - $6 coming soon
+                Pick Any 3 - $6 
               </button>
 
               <button
                 onClick={() =>
                   addToCart({
                     id: "rock-candy-5",
-                    name: "Rock Candy - 5 Pack",
+                    name: `Rock Candy - 5 Pack - ${formatFlavorMix(rockCandyFlavors)}`,
+
                     price: 9,
                   })
                 }
                 className="mt-3 rounded-full bg-purple-400 px-5 py-2 font-semibold text-black"
               >
-                Pick Any 5 - $9 coming soon
+                Pick Any 5 - $9 
               </button>
             </div>
           </div>
@@ -227,5 +318,6 @@ export default function ShopPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }

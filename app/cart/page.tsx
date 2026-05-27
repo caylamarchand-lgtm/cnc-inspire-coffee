@@ -78,8 +78,24 @@ const fullSizeCount = groupedItems.reduce((sum, item) => {
   return item.price >= 22 ? sum + item.quantity : sum;
 }, 0);
 
-const hasFreeShipping = groupedItems.some(item => item.freeShipping);
-const shipping = hasFreeShipping || fullSizeCount >= 2 || subtotal >= 50 ? 0 : 5;
+const hasFreeShipping = groupedItems.some((item) => item.freeShipping);
+
+const hasHoneyOrRockCandy = groupedItems.some((item) => {
+  const name = item.name.toLowerCase();
+
+  return (
+    name.includes("fun honey") ||
+    name.includes("rock candy")
+  );
+});
+
+const shipping =
+hasFreeShipping || fullSizeCount >= 2 || subtotal >= 50
+    ? 0
+    : hasHoneyOrRockCandy
+    ? 3.5
+    : 5;
+
 
 
 const total = subtotal + shipping;
