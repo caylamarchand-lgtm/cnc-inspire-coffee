@@ -237,22 +237,35 @@ name: `Fun Honey Bar - 20 Pack - ${formatFlavorMix(honeyFlavors)}`,
               <h3 className="text-xl font-semibold text-purple-300">Rock Candy Sticks</h3>
 
               <p className="mt-2 text-white/70">
-               Pick your favorite rock candy flavors
+               Pick your favorite rock candy sticks
+
               </p>
 
-<div className="mt-4 grid grid-cols-2 gap-2">
-  {[
-    "Banana",
-    "Blue Raspberry",
-    "Cherry",
-    "Cotton Candy",
-    "Natural Sugar"
-  ].map((flavor) => (
+<div className="mt-4 space-y-2">
+  {
+  [
+  "Cherry",
+  "Cotton Candy",
+  "Blue Raspberry",
+  "Strawberry",
+  "Watermelon",
+  "Grape",
+  "Orange",
+  "Green Apple",
+
+  "Tie Dye: Strawberry Lemon Blueberry",
+  "Tie Dye: Grape Blueberry Apple",
+  "Tie Dye: Cherry Cotton Candy Natural Sugar",
+  "Tie Dye: Strawberry Orange Lemon",
+  "Tie Dye: Watermelon Cotton Candy Grape"
+]
+
+  .map((flavor) => (
  <label
   key={flavor}
   className="flex items-center justify-between gap-2 text-sm text-white"
 >
-  <span className="leading-tight">{flavor}</span>
+  <span className="leading-tight flex-1">{flavor}</span>
 
   <input
     type="number"
