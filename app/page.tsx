@@ -176,7 +176,22 @@ const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
 },
 
-
+{
+  id: "golden-barrel",
+  name: "Golden Barrel",
+  notes: "Whiskey Caramel Cream flavored whole bean coffee • Rich caramel, cream & whiskey notes • Warm, bold finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/aFa6oH93Y4gH3Uj7VBefC0H",
+},
+{
+  id: "sunset-pecan",
+  name: "Sunset Pecan",
+  notes: "Caramel Pecan flavored whole bean coffee • Sweet caramel meets buttery pecan • Smooth nutty finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/aFa00ja828wXbmLdfVefC0I",
+},
 
   // TEAS (kept in the same array - totally fine)
   {
