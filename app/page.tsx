@@ -286,6 +286,25 @@ const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G",
 },
 
+{
+  id: "sweet-escape-dough-bites",
+  name: "Sweet Escape Dough Bites",
+  notes: "Chocolate shell • Sweet cookie dough center • Smooth dessert-style treat",
+  price: 6,
+  limited: false,
+  stripe: "",
+},
+
+{
+  id: "mocha-moon-drops",
+  name: "Mocha Moon Drops",
+  notes: "Chocolate shell • Coffee-filled center • Rich mocha flavor • Made for coffee lovers",
+  price: 6,
+  limited: false,
+  stripe: "",
+},
+
+
 ];
 
 
@@ -294,6 +313,17 @@ const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light
 
 const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
 const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
+
+const CHOCOLATE_IDS = [
+  "desert-fuel",
+  "golden-hour-bites",
+  "sweet-escape-dough-bites",
+  "mocha-moon-drops",
+];
+
+const CHOCOLATES = COFFEES.filter((p) =>
+  CHOCOLATE_IDS.includes(p.id)
+);
 
 function CoffeeCard({ coffee }: { coffee: Coffee }) {
   const label = coffee.limited ? "SMALL BATCH" : "AVAILABLE NOW";
