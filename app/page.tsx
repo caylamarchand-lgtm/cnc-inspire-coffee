@@ -289,10 +289,10 @@ const COFFEES: Coffee[] = [
 {
   id: "sweet-escape-dough-bites",
   name: "Sweet Escape Dough Bites",
-  notes: "Chocolate shell • Sweet cookie dough center • Smooth dessert-style treat",
-  price: 6,
+  notes: "Chocolate shell • Sweet brownie cookie dough center • Smooth dessert-style treat",
+  price: 5,
   limited: false,
-  stripe: "",
+  stripe: "https://buy.stripe.com/8x25kD5RM6oP9eD1xdefC0K",
 },
 
 {
@@ -301,7 +301,7 @@ const COFFEES: Coffee[] = [
   notes: "Chocolate shell • Coffee-filled center • Rich mocha flavor • Made for coffee lovers",
   price: 6,
   limited: false,
-  stripe: "",
+  stripe: "https://buy.stripe.com/aFa28r3JEfZpbmL1xdefC0J",
 },
 
 
