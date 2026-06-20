@@ -46,6 +46,8 @@ const formatFlavorMix = (flavors: Record<string, number>) => {
     { name: "Obsidian King", desc: "Bold • dark • premium" },
     { name: "Golden Hour Crème", desc: "Flavored • warm • sweet" },
     { name: "Desert Ember", desc: "Flavored • cozy • rich" },
+    { name: "Golden Barrel", desc: "Whiskey caramel cream • warm • bold" },
+{ name: "Sunset Pecan", desc: "Caramel pecan • sweet • nutty" },
   ];
 
   return (
