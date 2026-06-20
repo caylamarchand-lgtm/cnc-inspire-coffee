@@ -37,17 +37,17 @@ const formatFlavorMix = (flavors: Record<string, number>) => {
 
 
   const coffees = [
-    { name: "True North", desc: "Base Camp Blend • bold • steady" },
-    { name: "Still I Rise", desc: "Colombian • rich • smooth" },
-    { name: "After Dark", desc: "Dark roast • bold • deep" },
-    { name: "Anchor", desc: "Organic Guatemala • balanced • smooth" },
-    { name: "La Buena Hora", desc: "Mexican Nayarit • smooth • comforting" },
-    { name: "Higher Ground", desc: "Organic Peru • clean • elevated" },
-    { name: "Obsidian King", desc: "Bold • dark • premium" },
-    { name: "Golden Hour Crème", desc: "Flavored • warm • sweet" },
-    { name: "Desert Ember", desc: "Flavored • cozy • rich" },
-    { name: "Golden Barrel", desc: "Whiskey caramel cream • warm • bold" },
-{ name: "Sunset Pecan", desc: "Caramel pecan • sweet • nutty" },
+    { name: "True North", desc: "Base Camp Blend • bold • steady", category: "classic"  },
+    { name: "Still I Rise", desc: "Colombian • rich • smooth", category: "classic"  },
+    { name: "After Dark", desc: "Dark roast • bold • deep", category: "classic"  },
+    { name: "Anchor", desc: "Organic Guatemala • balanced • smooth", category: "classic"  },
+    { name: "La Buena Hora", desc: "Mexican Nayarit • smooth • comforting", category: "classic"  },
+    { name: "Higher Ground", desc: "Organic Peru • clean • elevated", category: "classic"  },
+    { name: "Obsidian King", desc: "Bold • dark • premium", category: "classic" },
+    { name: "Golden Hour Crème", desc: "Flavored • warm • sweet", category: "flavored" },
+    { name: "Desert Ember", desc: "Flavored • cozy • rich", category: "flavored" },
+    { name: "Golden Barrel", desc: "Whiskey caramel cream • warm • bold", category: "flavored" },
+    { name: "Sunset Pecan", desc: "Caramel pecan • sweet • nutty", category: "flavored" },
   ];
 
   return (
@@ -58,8 +58,9 @@ const formatFlavorMix = (flavors: Record<string, number>) => {
         <h1 className="text-3xl font-bold">Shop Coffee</h1>
         <p className="mt-2 text-white/70">Browse all available coffees below.</p>
 
+<h2 className="mt-8 text-2xl font-bold">Classic Coffees</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {coffees.map((coffee) => (
+          {coffees.filter((coffee) => coffee.category === "classic").map((coffee) => (
             <div key={coffee.name} className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <h2 className="text-xl font-semibold">{coffee.name}</h2>
               <p className="mt-2 text-white/70">{coffee.desc}</p>

@@ -99,7 +99,8 @@ type Coffee = {
   price: number;
   notes: string;
   limited: boolean;
-  stripe: string; // empty string = coming soon / not for sale yet
+  stripe: string;
+  category: "classic" | "flavored" | "treat" | "tea";
 };
 
 const COFFEES: Coffee[] = [
@@ -110,6 +111,8 @@ const COFFEES: Coffee[] = [
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/3cI6oH3JE3cDfD1gs7efC0e",
+   category: "classic",
+
   },
   {
     id: "la-buena-hora",
@@ -118,6 +121,8 @@ const COFFEES: Coffee[] = [
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/dRm14n6VQbJ962r6RxefC0h",
+    category: "classic",
+
   },
   {
     id: "higher-ground",
@@ -126,6 +131,8 @@ const COFFEES: Coffee[] = [
     price: 24,
     limited: true,
     stripe: "https://buy.stripe.com/fZudR91BweVl76va3JefC0c",
+    category: "classic",
+
   },
   {
     id: "anchor",
@@ -134,6 +141,8 @@ const COFFEES: Coffee[] = [
     price: 22,
     limited: false,
     stripe: "https://buy.stripe.com/aFa8wP6VQeVl9eDdfVefC0g",
+    category: "classic",
+
   },
   {
     id: "still-i-rise",
@@ -142,6 +151,8 @@ const COFFEES: Coffee[] = [
     price: 23,
     limited: false,
     stripe: "https://buy.stripe.com/5kQ8wP1BwdRh0I7a3JefC0d",
+    category: "classic",
+
   },
   {
     id: "true-north",
@@ -150,6 +161,8 @@ const COFFEES: Coffee[] = [
     price: 22,
     limited: false,
     stripe: "https://buy.stripe.com/00wdR96VQ14v76vb7NefC0f",
+    category: "classic",
+
   },
   {
   id: "obsidian-king",
@@ -158,6 +171,8 @@ const COFFEES: Coffee[] = [
   price: 25,
   limited: false,
   stripe: "https://buy.stripe.com/bJe3cv93Y9B1bmLfo3efC0i",
+  category: "classic",
+
 },
 {
   id: "desert-ember",
@@ -166,6 +181,7 @@ const COFFEES: Coffee[] = [
   price: 24,
   limited: false,
   stripe: "https://buy.stripe.com/eVqeVd2FAeVl4Yn0t9efC0y",
+  category: "flavored",
 },
 {
   id: "golden-hour-creme",
@@ -174,6 +190,7 @@ const COFFEES: Coffee[] = [
   price: 24,
   limited: false,
   stripe: "https://buy.stripe.com/8x200j5RM6oPaiH3FlefC0z",
+  category: "flavored",
 },
 
 {
@@ -183,6 +200,7 @@ const COFFEES: Coffee[] = [
   price: 23,
   limited: false,
   stripe: "https://buy.stripe.com/aFa6oH93Y4gH3Uj7VBefC0H",
+  category: "flavored",
 },
 {
   id: "sunset-pecan",
@@ -191,6 +209,7 @@ const COFFEES: Coffee[] = [
   price: 23,
   limited: false,
   stripe: "https://buy.stripe.com/aFa00ja828wXbmLdfVefC0I",
+  category: "flavored",
 },
 
   // TEAS (kept in the same array - totally fine)
@@ -201,6 +220,7 @@ const COFFEES: Coffee[] = [
     price: 10,
     limited: false,
     stripe: "https://buy.stripe.com/9B628r3JE14v9eD1xdefC0a",
+    category: "tea"
   },
   {
     id: "desert-current",
@@ -211,6 +231,7 @@ const COFFEES: Coffee[] = [
     limited: false,
     // ✅ FIXED: removed the comma at the end
     stripe: "https://buy.stripe.com/aFadR92FA28z1Mba3JefC0b",
+    category: "tea"
   },
   {
   id: "golden-dunes-15",
@@ -219,6 +240,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/3cI00j7ZU00raiHcbRefC0s",
+  category: "tea"
 },
 {
   id: "first-light-15",
@@ -227,6 +249,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/00wbJ15RM14vbmLa3JefC0q",
+  category: "tea"
 },
 {
   id: "desert-heat-15",
@@ -235,6 +258,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/28EdR96VQ9B14Yn7VBefC0o",
+  category: "tea"
 },
 {
   id: "moon-drift-15",
@@ -243,6 +267,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/eVqdR90xs3cD2Qffo3efC0n",
+  category: "tea"
 },
 {
   id: "coastal-drift-15",
@@ -251,6 +276,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/28E5kD5RMcNdaiH8ZFefC0m",
+  category: "tea"
 },
 {
   id: "desert-breeze-15",
@@ -259,6 +285,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/dRmbJ13JE8wXgH50t9efC0w",
+  category: "tea"
 },
 {
   id: "sunset-sangria",
@@ -267,6 +294,7 @@ const COFFEES: Coffee[] = [
   price: 10,
   limited: false,
   stripe: "https://buy.stripe.com/bJe7sL4NI7sT3UjejZefC0A",
+  category: "tea"
 },
 {
   id: "desert-fuel",
@@ -275,6 +303,7 @@ const COFFEES: Coffee[] = [
   price: 6,
   limited: false,
   stripe: "https://buy.stripe.com/4gMaEX7ZUdRhaiHcbRefC0F",
+  category: "treat"
 },
 
 {
@@ -284,6 +313,7 @@ const COFFEES: Coffee[] = [
   price: 6,
   limited: false,
   stripe: "https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G",
+  category: "treat"
 },
 
 {
@@ -293,6 +323,7 @@ const COFFEES: Coffee[] = [
   price: 5,
   limited: false,
   stripe: "https://buy.stripe.com/8x25kD5RM6oP9eD1xdefC0K",
+  category: "treat"
 },
 
 {
@@ -302,6 +333,7 @@ const COFFEES: Coffee[] = [
   price: 6,
   limited: false,
   stripe: "https://buy.stripe.com/aFa28r3JEfZpbmL1xdefC0J",
+  category: "treat"
 },
 
 
@@ -311,19 +343,11 @@ const COFFEES: Coffee[] = [
 
 const TEA_IDS = ["soft-horizon", "desert-current","golden-dunes-15","first-light-15","desert-heat-15","moon-drift-15","coastal-drift-15","desert-breeze-15","sunset-sangria"];
 
-const TEAS = COFFEES.filter((p) => TEA_IDS.includes(p.id));
-const COFFEE_ONLY = COFFEES.filter((p) => !TEA_IDS.includes(p.id));
+const CLASSIC_COFFEES = COFFEES.filter((p) => p.category === "classic");
+const FLAVORED_COFFEES = COFFEES.filter((p) => p.category === "flavored");
+const TEAS = COFFEES.filter((p) => p.category === "tea");
+const CHOCOLATES = COFFEES.filter((p) => p.category === "treat");
 
-const CHOCOLATE_IDS = [
-  "desert-fuel",
-  "golden-hour-bites",
-  "sweet-escape-dough-bites",
-  "mocha-moon-drops",
-];
-
-const CHOCOLATES = COFFEES.filter((p) =>
-  CHOCOLATE_IDS.includes(p.id)
-);
 
 function CoffeeCard({ coffee }: { coffee: Coffee }) {
   const label = coffee.limited ? "SMALL BATCH" : "AVAILABLE NOW";
@@ -383,7 +407,7 @@ function CoffeeCard({ coffee }: { coffee: Coffee }) {
 }
 
 export default function Home() {
-  const firstBuyLink = COFFEE_ONLY.find((c) => c.stripe)?.stripe || "#shop";
+  const firstBuyLink = CLASSIC_COFFEES.find((c) => c.stripe)?.stripe || "#shop";
 
   const [reviews, setReviews] = React.useState<any[]>([]);
   const [name, setName] = React.useState("");
@@ -542,14 +566,14 @@ export default function Home() {
             </div>
 
             {/* RIGHT */}
-            <Card strong className="p-6">
+            <Card strong className="p-4">
               <div className="flex items-start gap-4">
                 <div className="rounded-2xl bg-[#F6F1E6] p-2 ring-1 ring-black/10">
                   <Image
                     src="/coffee-treats.jpg"
                    alt="Desert Fuel and Golden Hour Bites chocolate covered coffee beans"
-                    width={240}
-                    height={320}
+                    width={120}
+                    height={150}
                     className="rounded-xl object-cover"
                     priority
                   />
@@ -624,7 +648,7 @@ export default function Home() {
         </section>
 
         {/* SHOP */}
-        <section id="shop" className="pt-12 sm:pt-16">
+        <section id="shop" className="pt-4 sm:pt-6">
           {/* COFFEE FIRST (important) */}
           <div className="flex items-end justify-between gap-6">
             <div>
@@ -640,7 +664,8 @@ export default function Home() {
              small batch • core collection
             </span>
           </div>
-<section className="mt-12 rounded-3xl border border-white/20 bg-white/10 p-6 text-white">
+<section className="mt-6 rounded-3xl border border-white/20 bg-white/10 p-2 text-white">
+
   <p className="text-xs uppercase tracking-widest text-yellow-300 mb-2">
     TRY ME FIRST
   </p>
@@ -660,43 +685,80 @@ export default function Home() {
     View Sample Collection
   </a>
 </section>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {COFFEE_ONLY.map((coffee) => (
-              <CoffeeCard key={coffee.id} coffee={coffee} />
-            ))}
-          </div>
+         <div className="mt-16 grid gap-10 lg:grid-cols-2">
+  <section>
+   <h2 className="text-3xl font-bold text-white mb-6"> Classic Coffees</h2>
+    <div className="mt-6 grid gap-6">
+      {CLASSIC_COFFEES.map((coffee) => (
+        <CoffeeCard key={coffee.id} coffee={coffee} />
+      ))}
+    </div>
+  </section>
 
+  <section>
+   <h2 className="text-3xl font-bold text-white mb-6"> Flavored Coffees</h2>
+    <div className="mt-6 grid gap-6">
+      {FLAVORED_COFFEES.map((coffee) => (
+        <CoffeeCard key={coffee.id} coffee={coffee} />
+      ))}
+    </div>
+  </section>
+
+
+
+</div>
           {/* Divider */}
           <div className="my-14 h-px w-full bg-white/20" />
 
-          {/* TEAS (own beautiful bundle) */}
-          <section id="tea" className="scroll-mt-24 rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-6 sm:p-8">
-            <div className="flex items-end justify-between gap-6">
-              <div>
-                <h2 className="text-4xl font-semibold tracking-wide text-white">
-                  TEAS
-                </h2>
-                <p className="mt-2 text-white/80">
-                  Whole leaf blends • Small Batch
-                </p>
-              </div>
+         <div className="mt-12 grid gap-8 lg:grid-cols-2">
+  {/* TEAS */}
+  <section
+    id="tea"
+    className="scroll-mt-24 rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-6 sm:p-8"
+  >
+    <div className="flex items-end justify-between gap-6">
+      <div>
+        <h2 className="text-4xl font-semibold tracking-wide text-white">
+          TEAS
+        </h2>
+        <p className="mt-2 text-white/80">
+          Whole leaf blends • Small Batch
+        </p>
+      </div>
 
-              <span className="text-xs tracking-[0.35em] uppercase text-white/70">
-                Desert Series
-              </span>
-            </div>
+      <span className="text-xs tracking-[0.35em] uppercase text-white/70">
+        Desert Series
+      </span>
+    </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {TEAS.map((tea) => (
-                <CoffeeCard key={tea.id} coffee={tea} />
-              ))}
-            </div>
-          </section>
-        </section>
+    <div className="mt-6 grid gap-6">
+      {TEAS.map((tea) => (
+        <CoffeeCard key={tea.id} coffee={tea} />
+      ))}
+    </div>
+  </section>
 
+  {/* COFFEE TREATS */}
+  <section className="rounded-2xl border border-white/15 bg-black/35 backdrop-blur p-4 sm:p-5">
+    <h2 className="text-3xl font-semibold tracking-wide text-white">
+      Coffee Treats & Bites
+    </h2>
+
+    <p className="mt-2 text-white/80">
+      Chocolate-covered coffee treats made for coffee lovers.
+    </p>
+
+    <div className="mt-6 grid gap-6">
+      {CHOCOLATES.map((treat) => (
+        <CoffeeCard key={treat.id} coffee={treat} />
+      ))}
+    </div>
+  </section>
+</div>
+</section>
         {/* REVIEWS */}
         <section id="reviews" className="pt-12 sm:pt-16">
-          <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur p-6 sm:p-8">
+          <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur p-4 sm:p-5">
             <div className="flex items-start justify-between gap-6">
               <div>
                 <h2 className="text-2xl font-semibold tracking-tight text-white">
