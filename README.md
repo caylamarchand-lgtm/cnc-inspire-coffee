@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CNC Inspire Coffee ☕
 
-## Getting Started
+A custom full-stack e-commerce platform built for CNC Inspire Coffee, an independent coffee, tea, honey, and specialty treats business.
 
-First, run the development server:
+## Live Website
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+https://www.cncinspirecoffee.com
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Product catalog for coffee, tea, honey, honey sticks, and treats
+- Mobile responsive design
+- Custom shopping experience
+- Product filtering and organization
+- Stripe payment integration
+- Dynamic product management
+- Fast deployment through Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Stripe
+- Vercel
+- Git
+- GitHub
 
-To learn more about Next.js, take a look at the following resources:
+## Project Goals
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project was created to provide a custom online storefront for CNC Inspire Coffee while gaining real-world experience in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Full-stack development
+- E-commerce systems
+- API integrations
+- Responsive UI design
+- Deployment and production maintenance
 
-## Deploy on Vercel
+## Current Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Coffee storefront
+- Tea storefront
+- Honey products
+- Specialty treats
+- Mobile-friendly layout
+- Product categories
+- Custom branding
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+
+Cayla Marchand
+Full Stack Developer
+Owner of CNC Inspire Coffee
