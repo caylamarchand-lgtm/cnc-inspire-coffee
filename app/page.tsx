@@ -165,6 +165,15 @@ const COFFEES: Coffee[] = [
 
   },
   {
+  id: "cafe-fuego",
+  name: "Café Fuego",
+  notes: "Espresso roast • Dark chocolate • Caramel • Smoky • Bold • Full-bodied",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/dRm14n4NIcNd9eD3FlefC0L",
+  category: "classic",
+},
+  {
   id: "obsidian-king",
   name: "Obsidian King",
   notes: "Dark roast whole bean coffee • Bold smoky flavor • Rich smooth finish",
@@ -211,7 +220,15 @@ const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/aFa00ja828wXbmLdfVefC0I",
   category: "flavored",
 },
-
+{
+  id: "sweet-escape",
+  name: "Sweet Escape",
+  notes: "Chocolate Caramel Turtle flavored whole bean coffee • Rich chocolate • Sweet caramel • Toasted pecans • Smooth, decadent finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/eVq28ra8200rbmLfo3efC0M",
+  category: "flavored",
+},
   // TEAS (kept in the same array - totally fine)
   {
     id: "soft-horizon",
