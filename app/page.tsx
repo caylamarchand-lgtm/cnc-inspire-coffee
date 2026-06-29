@@ -847,30 +847,7 @@ export default function Home() {
 
                     <p className="mt-2 text-sm text-white/85">{r.message}</p>
 
-                    <button
-                      className="mt-3 text-xs text-red-400 hover:text-red-300"
-                      onClick={async () => {
-                        const password = prompt("Admin password?");
-                        if (!password) return;
-
-                        const res = await fetch("/api/reviews/delete", {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ id: r.id, password }),
-                        });
-
-                        const json = await res.json();
-
-                        if (!res.ok) {
-                          alert("Delete failed: " + (json.error || "Unknown error"));
-                          return;
-                        }
-
-                        fetchReviews();
-                      }}
-                    >
-                      Delete
-                    </button>
+                   
                   </div>
                 ))
               )}
