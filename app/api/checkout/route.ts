@@ -131,6 +131,7 @@ if (shippingAmount > 0) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
+      allow_promotion_codes: true,
       success_url: `${origin}/success`,
       cancel_url: `${origin}/cart`,
       shipping_address_collection: {
