@@ -34,7 +34,7 @@ export const COFFEES: Coffee[] = [
     name: "Higher Ground",
     notes: "Organic Peru whole bean coffee • Smooth premium roast • Balanced finish",
     price: 24,
-    limited: true,
+    limited: false,
     stripe: "https://buy.stripe.com/fZudR91BweVl76va3JefC0c",
     category: "classic",
 
@@ -134,6 +134,53 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/eVq28ra8200rbmLfo3efC0M",
   category: "flavored",
 },
+{
+  id: "sun-chaser",
+  name: "Sun Chaser",
+  notes: "Breakfast Blend whole bean coffee • Smooth, balanced flavor • Gentle sweetness • Clean, satisfying finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/7sY5kDgwqeVlbmL1xdefC0N",
+  category: "classic",
+},
+{
+  id: "copper-canyon",
+  name: "Copper Canyon",
+  notes: "Brazilian whole bean coffee • Notes of toasted nuts • Milk chocolate • Naturally sweet finish",
+  price: 24,
+  limited: false,
+  stripe: "https://buy.stripe.com/14A7sLdke14v76v6RxefC0O",
+  category: "classic",
+},
+{
+  id: "desert-owl",
+  name: "Desert Owl",
+  notes: "Spotted Owl whole bean coffee • Smooth medium roast • Cocoa • Toasted nuts • Clean, satisfying finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/9B67sLdke9B176v6RxefC0P",
+  category: "classic",
+},
+{
+  id: "whiskey-hollow",
+  name: "Whiskey Hollow",
+  notes: "Chocolate Bourbon flavored whole bean coffee • Rich chocolate • Smooth bourbon-inspired flavor • Bold, velvety finish",
+  price: 24,
+  limited: false,
+  stripe: "https://buy.stripe.com/eVq00jfsm3cDduTa3JefC0Q",
+  category: "flavored",
+},
+{
+  id: "sweet-trails",
+  name: "Sweet Trails",
+  notes: "Cookie Dough flavored whole bean coffee • Sweet • Creamy • Smooth, comforting finish",
+  price: 23,
+  limited: false,
+  stripe: "https://buy.stripe.com/3cI7sLgwq00r1MbdfVefC0R",
+  category: "flavored",
+},
+
+
   // TEAS (kept in the same array - totally fine)
   {
     id: "soft-horizon",
