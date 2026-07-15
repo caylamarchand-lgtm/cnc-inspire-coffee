@@ -304,7 +304,33 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/aFa28r3JEfZpbmL1xdefC0J",
   category: "treat"
 },
-
+{
+  id: "sunbaked-kisses",
+  name: "Sunbaked Kisses",
+  notes: "Snickerdoodle cookie dough bites • Soft cinnamon sugar flavor • Sweet, buttery finish",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/7sY9AT6VQ14v2Qffo3efC0S",
+  category: "treat",
+},
+{
+  id: "desert-pebbles",
+  name: "Desert Pebbles",
+  notes: "Crispy milk chocolate bites • Crunchy • Creamy milk chocolate • Perfect snack-size treat",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/7sY3cv4NI28z8az5NtefC0T",
+  category: "treat",
+},
+{
+  id: "desert-glow",
+  name: "Desert Glow",
+  notes: "Peanut butter toffee • Crunchy peanuts coated in rich peanut butter toffee • Sweet & salty",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/9B65kDcga3cD76vdfVefC0U",
+  category: "treat",
+},
 
 ];
 
