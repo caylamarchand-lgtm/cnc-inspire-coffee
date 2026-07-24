@@ -331,6 +331,15 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/9B65kDcga3cD76vdfVefC0U",
   category: "treat",
 },
+{
+  id: "desert-inferno",
+  name: "Desert Inferno",
+  notes: "Chili Lemon peanuts • Crunchy roasted peanuts • Zesty lemon • Bold chili pepper kick • Sweet, tangy & spicy",
+  price: 6,
+  limited: false,
+  stripe: "https://buy.stripe.com/eVq3cva8200r62r5NtefC0V",
+  category: "treat",
+},
 
 ];
 
