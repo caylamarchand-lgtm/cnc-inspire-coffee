@@ -14,10 +14,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
   title: "CNC Inspire Coffee",
   description: "Small batch coffee — roasted with intention.",
+  verification: {
+    other: {
+      "p:domain_verify": "e002fb5f11a9a96837d59df13bf8db94",
+    },
+  },
 };
+
 
 export default function RootLayout({
   children,
