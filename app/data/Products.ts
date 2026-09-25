@@ -169,7 +169,15 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/00w8wP2FA9B1eyX2BhefC19",
   category: "flavored",
 },
-
+{
+  id: "quiet-storm",
+  name: "Quiet Storm (Decaf)",
+  notes: "Swiss Water Decaf • Dark Chocolate • Almond • Smooth Finish",
+  price: 19.99,
+  limited: false,
+  stripe: "https://buy.stripe.com/4gMaEX5RMcNd4Yn0t9efC1a",
+  category: "classic",
+},
 
   // TEAS (kept in the same array - totally fine)
   {

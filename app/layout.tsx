@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     other: {
       "p:domain_verify": "e002fb5f11a9a96837d59df13bf8db94",
     },
+    google:"",
   },
 };
 
