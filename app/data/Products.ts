@@ -4,6 +4,7 @@ export type Coffee = {
   price: number;
   notes: string;
   limited: boolean;
+  stock?: number;
   stripe: string;
   category: "classic" | "flavored" | "treat" | "tea";
 };
@@ -178,7 +179,16 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/4gMaEX5RMcNd4Yn0t9efC1a",
   category: "classic",
 },
-
+{
+  id: "dubai-chocolate-oasis",
+  name: "Dubai Chocolate Oasis",
+  notes: "Creamy Milk Chocolate • Pistachio • Smooth Medium Roast",
+  price: 23.00,
+  limited: true,
+  stock: 6,
+  stripe: "https://buy.stripe.com/00weVddke5kLaiH5NtefC1b",
+  category: "flavored",
+},
   // TEAS (kept in the same array - totally fine)
   {
     id: "soft-horizon",

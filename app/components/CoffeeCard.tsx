@@ -6,7 +6,19 @@ import { addToCart } from "@/lib/cart";
 
 
 export default function CoffeeCard({ coffee }: { coffee: Coffee }) {
-const label = coffee.limited ? "TEMPORARILY OUT OF STOCK" : "AVAILABLE NOW";
+const isSoldOut =
+  coffee.stock !== undefined
+    ? coffee.stock <= 0
+    : coffee.limited;
+
+const label = isSoldOut
+  ? coffee.stock !== undefined
+    ? "SOLD OUT"
+    : "TEMPORARILY OUT OF STOCK"
+  : coffee.limited
+    ? "LIMITED EDITION"
+    : "AVAILABLE NOW";
+
 
   const headline = coffee.name;
 
@@ -27,7 +39,7 @@ const label = coffee.limited ? "TEMPORARILY OUT OF STOCK" : "AVAILABLE NOW";
         {coffee.notes}
       </p>
 
-     {coffee.stripe && !coffee.limited ? (
+     {coffee.stripe && !isSoldOut ? (
 
        <>
   <a

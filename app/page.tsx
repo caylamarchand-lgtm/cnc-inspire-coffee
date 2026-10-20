@@ -182,14 +182,14 @@ export default function Home() {
             </div>
 
             {/* RIGHT */}
-            <Card strong className="p-4">
-              <div className="flex items-start gap-4">
+            <Card strong className="p-4 min-h-[420px] flex flex-col justify-center">
+              <div className="flex items-start gap-6">
                 <div className="rounded-2xl bg-[#F6F1E6] p-2 ring-1 ring-black/10">
                   <Image
-                    src="/coffee-treats.jpg"
-                   alt="Desert Fuel and Golden Hour Bites chocolate covered coffee beans"
-                    width={120}
-                    height={150}
+                   src="/Dubai-Coffee.jpg"
+                   alt="Dubai Chocolate Oasis Limited Edition Coffee"
+                    width={180}
+                    height={225}
                     className="rounded-xl object-cover"
                     priority
                   />
@@ -200,65 +200,44 @@ export default function Home() {
                     className="text-xs tracking-[0.35em] uppercase"
                     style={{ color: PALETTE.muted }}
                   >
-                    New Coffee Bean Treats 
+                  NEW ARRIVAL • LIMITED EDITION
                   </p>
 
                   <h3
-                    className="mt-1 text-xl font-semibold"
+                    className="mt-1 text-x2 font-semibold"
                     style={{ color: PALETTE.ink }}
                   >
-                   Desert Fuel + Golden Hour Bites 
+                   Dubai Chocolate Oasis 
                   </h3>
 
                   <p className="mt-2 text-sm" style={{ color: PALETTE.muted }}>
-                    Dark chocolate espresso beans and creamy mocha-filled bites made for coffee lovers.{" "}
+                   Creamy milk chocolate meets nutty pistachio in a smooth, indulgent medium roast. A luxurious escape in every cup!
                     </p>
 <p className="mt-3 text-xs font-semibold" style={{ color: PALETTE.ink }}>
-  Heat-Safe Shipping Note: Chocolate coffee treats ship Monday–Wednesday only to help prevent weekend delays and melting in transit.
+12 OZ WHOLE BEAN COFFEE
 </p>
-<div className="mt-4 flex flex-wrap gap-3">
+<div className="mt-4">
   <a
-    href="https://buy.stripe.com/4gMaEX7ZUdRhaiHcbRefC0F"
-    className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
-    style={{ background: "#3a2a1f", color: "#fff", textDecoration: "none" }}
+    href="https://buy.stripe.com/00weVddke5kLaiH5NtefC1b"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block rounded-full px-6 py-3 text-sm font-bold"
+    style={{
+      background: "#D4AF70",
+      color: "#201810",
+      textDecoration: "none",
+    }}
   >
-    Buy Desert Fuel
-  </a>
-
-  <a
-    href="https://buy.stripe.com/4gM6oH3JEdRh62r8ZFefC0G"
-    className="inline-block rounded-full px-4 py-2 text-sm font-semibold"
-    style={{ background: "#c89b5d", color: "#fff", textDecoration: "none" }}
-  >
-    Buy Golden Hour Bites
+    Shop Dubai Chocolate Oasis
   </a>
 </div>
+
+
 
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-3">
-                {[
-                { k: "BUY DESERT FUEL", v: "Dark chocolate espresso beans • bold crunch • rich coffee bite" },
-{ k: "BUY GOLDEN HOUR BITES", v: "Dark chocolate mocha centers • smooth creamy filling • sweet finish" },
-
-{ k: "SIZE", v: "2oz gourmet chocolate coffee treats" },
-{ k: "BEST FOR", v: "coffee lovers & sweet caffeine cravings" },
-
-                ].map((row) => (
-                  <div key={row.k} className="rounded-2xl p-4" style={styles.card}>
-                    <p
-                      className="text-[11px] tracking-[0.35em] uppercase"
-                      style={{ color: PALETTE.muted }}
-                    >
-                      {row.k}
-                    </p>
-                    <p className="mt-1 text-sm" style={{ color: PALETTE.ink }}>
-                      {row.v}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            
             </Card>
           </div>
         </section>
