@@ -189,6 +189,15 @@ export const COFFEES: Coffee[] = [
   stripe: "https://buy.stripe.com/00weVddke5kLaiH5NtefC1b",
   category: "flavored",
 },
+{
+  id: "caramel-sweet-surrender",
+  name: "Caramel Sweet Surrender",
+  notes: "Sweet Caramel • Buttery Smoothness • Rich Finish",
+  price: 19.99,
+  limited: false,
+  stripe: "https://buy.stripe.com/8x214nfsm3cD1Mb6RxefC1c",
+  category: "flavored",
+},
   // TEAS (kept in the same array - totally fine)
   {
     id: "soft-horizon",
